@@ -1,0 +1,2 @@
+[0318/204817.722:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\bao\AppData\Local\Google\Chrome\User Data\Crashpad\reports\d849e6d4-9ed3-4457-8181-0bbb1b7e2b5f.dmp: 另一个程序正在使用此文件，进程无法访问。 (0x20)
+[0319/151144.016:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\bao\AppData\Local\Google\Chrome\User Data\Crashpad\reports\a39fedf3-9ba1-41d3-aa07-09e6078ffa14.dmp: 另一个程序正在使用此文件，进程无法访问。 (0x20)
