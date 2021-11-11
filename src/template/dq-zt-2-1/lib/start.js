@@ -1,8 +1,8 @@
 import { getAnimation, getSound, createSprite } from '../../../loader'
 import HitAreaShapes from 'hitarea-shapes'
 import { TweenLite, TweenMax } from 'gsap'
-import Common from './index'
 import { Graphics } from 'pixi.js'
+import Common from './index'
 
 export default class Start extends Common {
   constructor(...a) {
@@ -10,7 +10,7 @@ export default class Start extends Common {
     this.numArrint = [true, false, false, false, false]
     this.numArrZb = [{ x: 588, y: 511.5 }, { x: 946, y: 511.5 }, { x: 501, y: 754 }, { x: 678.5, y: 754 }, { x: 726, y: 986 }]
 
-    this.lineArrZb = [{ x: 590, y: 662 }, { x: 735, y: 765 }]
+    this.lineArrZb = [{ x: 590, y: 662 }, { x: 733, y: 765 }]
 
     // 按钮
     this.btnArr = [createSprite('image_btn1')]
@@ -19,7 +19,8 @@ export default class Start extends Common {
     this.numArr = [createSprite('image_ip1'), createSprite('image_ip2'), createSprite('image_ip3'), createSprite('image_ip4'), createSprite('image_ip5')]
 
     // 符号
-    this.markArr = [createSprite('image_mark1'), createSprite('image_mark2')]
+    this.markArr = [createSprite('image_mark')]
+    // this.markArr = [createSprite('image_mark1'), createSprite('image_mark2')]
 
     // 线
     this.lineArr = [createSprite('image_line1'), createSprite('image_line2')]
@@ -80,7 +81,7 @@ export default class Start extends Common {
       v.visible = false
       v.anchor.set(0.5)
       this._stage.addChild(v)
-      v.position.set(767 + i * 358, 508.5)
+      v.position.set(946, 510)
     })
 
     // 问号
@@ -120,6 +121,12 @@ export default class Start extends Common {
         v.scale.set(0.9)
       }).on('pointerup', () => {
         v.scale.set(1)
+        this._stage.removeChild(this.ani)
+        clearTimeout(this.time)
+        clearTimeout(this.time2)
+        clearTimeout(this.time3)
+        clearTimeout(this.time4)
+
         this.init()
       })
     })
@@ -135,12 +142,34 @@ export default class Start extends Common {
           for (let j = 1; j < 3; j++) {
             this.numArr[j].interactive = true
           }
-          this.numArr[2].visible = true
-          this.numArr[3].visible = true
-          this.lineArr[0].visible = true
+
+          this.ani = getAnimation('animation_xinzhitansuo2')
+          this._stage.addChild(this.ani)
+          this.ani.state.setAnimation(0, '1', false).listener = {
+            complete: () => {
+              this.time2 = setTimeout(() => {
+                this._stage.removeChild(this.ani)
+
+                this.numArr[2].visible = true
+                this.numArr[3].visible = true
+                this.lineArr[0].visible = true
+              }, 0);
+            }
+          }
         } else if (i === 1 || i === 2) {
-          this.lineArr[1].visible = true
-          this.numArr[4].visible = true
+          this.ani = getAnimation('animation_xinzhitansuo2')
+          this._stage.addChild(this.ani)
+          this.ani.state.setAnimation(0, '2', false).listener = {
+            complete: () => {
+              this.time3 = setTimeout(() => {
+                this._stage.removeChild(this.ani)
+
+                this.lineArr[1].visible = true
+                this.numArr[4].visible = true
+              }, 0);
+            }
+          }
+
         }
       })
     })
@@ -151,8 +180,20 @@ export default class Start extends Common {
       this.wh.scale.set(0.9)
     }).on('pointerup', () => {
       this.wh.scale.set(1)
-      this.wh.interactive = false
-      this.wh.texture = res['image_26'].texture
+      this.wh.visible = false
+      this.ani = getAnimation('animation_xinzhitansuo2')
+      this._stage.addChild(this.ani)
+      this.ani.state.setAnimation(0, '3', false).listener = {
+        complete: () => {
+          this.time4 = setTimeout(() => {
+            this._stage.removeChild(this.ani)
+
+            this.wh.visible = true
+            this.wh.interactive = false
+            this.wh.texture = res['image_26'].texture
+          }, 0);
+        }
+      }
     })
 
     // 物品
@@ -173,11 +214,21 @@ export default class Start extends Common {
       getSound('audio_click').play()
       this._stage.removeChild(this.red)
 
-      this.wh.visible = true
-      this.numArr[0].visible = true
-      this.numArr[1].visible = true
-      this.markArr.map(v => { v.visible = true })
-      this.goodsArr.map(v => { v.visible = true })
+      this.ani = getAnimation('animation_xinzhitansuo2')
+      this._stage.addChild(this.ani)
+      this.ani.state.setAnimation(0, 'in', false).listener = {
+        complete: () => {
+          this.time = setTimeout(() => {
+            this._stage.removeChild(this.ani)
+
+            this.wh.visible = true
+            this.numArr[0].visible = true
+            this.numArr[1].visible = true
+            this.markArr.map(v => { v.visible = true })
+            this.goodsArr.map(v => { v.visible = true })
+          }, 0);
+        }
+      }
     })
   }
 
