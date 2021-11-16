@@ -8,9 +8,9 @@ export default class Start extends Common {
   constructor(...a) {
     super(...a)
     this.numArrint = [true, false, false, false, false]
-    this.numArrZb = [{ x: 593.5, y: 582.5 }, { x: 943, y: 582.5 }, { x: 484, y: 799 }, { x: 705, y: 799 }, { x: 825.5, y: 991.5 }]
+    this.numArrZb = [{ x: 588, y: 511.5 }, { x: 946, y: 511.5 }, { x: 501, y: 754 }, { x: 678.5, y: 754 }, { x: 726, y: 986 }]
 
-    this.lineArrZb = [{ x: 595, y: 711 }, { x: 834.5, y: 805 }]
+    this.lineArrZb = [{ x: 590, y: 662 }, { x: 733, y: 765 }]
 
     // 按钮
     this.btnArr = [createSprite('image_btn1')]
@@ -20,16 +20,14 @@ export default class Start extends Common {
 
     // 符号
     this.markArr = [createSprite('image_mark')]
+    // this.markArr = [createSprite('image_mark1'), createSprite('image_mark2')]
 
     // 线
     this.lineArr = [createSprite('image_line1'), createSprite('image_line2')]
 
     // 物品
     this.goodsArr = [
-      createSprite('image_goods1'), createSprite('image_goods1'),
-      createSprite('image_goods1'),
-      createSprite('image_goods2'), createSprite('image_goods2'),
-      createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2')]
+      createSprite('image_goods1'), createSprite('image_goods1'), createSprite('image_goods1'), createSprite('image_goods1'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2'), createSprite('image_goods2')]
 
     // 问号
     this.wh = createSprite('image_wh')
@@ -42,8 +40,6 @@ export default class Start extends Common {
   }
 
   init() {
-    this.yes = false
-    this.yes2 = false
     this._stage.addChild(createSprite('image_bg'))
 
     this.red.alpha = 0
@@ -85,7 +81,7 @@ export default class Start extends Common {
       v.visible = false
       v.anchor.set(0.5)
       this._stage.addChild(v)
-      v.position.set(943, 581.5)
+      v.position.set(946, 510)
     })
 
     // 问号
@@ -95,7 +91,7 @@ export default class Start extends Common {
     this.wh.interactive = true
     this.wh.texture = res['image_wh'].texture
     this._stage.addChild(this.wh)
-    this.wh.position.set(1292.5, 579.5)
+    this.wh.position.set(1288.5, 500.5)
 
     // 物品
     this.goodsArr.map((v, i) => {
@@ -104,25 +100,14 @@ export default class Start extends Common {
       v.anchor.set(0.5)
       v.cursor = 'pointer'
       this._stage.addChild(v)
-      if (i < 3) {
-        v.position.set(500 + i * 209, 202)
-      } else {
-        v.texture = res['image_goods2'].texture
-        if (i < 8) {
-          v.position.set(919 + (i - 3) * 114, 163.5)
-        } else {
-          v.position.set(919 + (i - 8) * 114, 361.5)
-        }
-      }
-
-      if (i > 1) {
+      if (i < 4) {
         v.interactive = true
+        v.position.set(523 + i * 148, 206)
+        v.texture = res['image_goods1'].texture
+      } else {
+        v.position.set(1130.5 + (i - 4) * 51.5, 238)
       }
     })
-    this.goodsArr[0].position.set(500, 202)
-    this.goodsArr[1].position.set(500 + 210, 202)
-    this.goodsArr[2].position.set(500 + 2 * 209, 202)
-
   }
 
   eventHandle() {
@@ -141,7 +126,6 @@ export default class Start extends Common {
         clearTimeout(this.time2)
         clearTimeout(this.time3)
         clearTimeout(this.time4)
-        clearTimeout(this.time5)
 
         this.init()
       })
@@ -155,40 +139,34 @@ export default class Start extends Common {
       }).on('pointerup', () => {
         v.scale.set(1)
         if (i === 0) {
-          if (!this.yes) {
-            this.yes = true
+          for (let j = 1; j < 3; j++) {
+            this.numArr[j].interactive = true
+          }
 
-            this.ani = getAnimation('animation_zaijinyibujiaoshi')
-            this._stage.addChild(this.ani)
-            this.ani.state.setAnimation(0, '1', false).listener = {
-              complete: () => {
-                this.time2 = setTimeout(() => {
-                  this._stage.removeChild(this.ani)
+          this.ani = getAnimation('animation_xinzhitansuo2')
+          this._stage.addChild(this.ani)
+          this.ani.state.setAnimation(0, '1', false).listener = {
+            complete: () => {
+              this.time2 = setTimeout(() => {
+                this._stage.removeChild(this.ani)
 
-                  this.numArr[1].interactive = true
-                  this.numArr[3].interactive = true
-                  this.numArr[2].visible = true
-                  this.numArr[3].visible = true
-                  this.lineArr[0].visible = true
-                }, 0);
-              }
+                this.numArr[2].visible = true
+                this.numArr[3].visible = true
+                this.lineArr[0].visible = true
+              }, 0);
             }
           }
-        } else if (i === 1 || i === 3) {
-          if (!this.yes2) {
-            this.yes2 = true
+        } else if (i === 1 || i === 2) {
+          this.ani = getAnimation('animation_xinzhitansuo2')
+          this._stage.addChild(this.ani)
+          this.ani.state.setAnimation(0, '2', false).listener = {
+            complete: () => {
+              this.time3 = setTimeout(() => {
+                this._stage.removeChild(this.ani)
 
-            this.ani = getAnimation('animation_zaijinyibujiaoshi')
-            this._stage.addChild(this.ani)
-            this.ani.state.setAnimation(0, '2', false).listener = {
-              complete: () => {
-                this.time3 = setTimeout(() => {
-                  this._stage.removeChild(this.ani)
-
-                  this.lineArr[1].visible = true
-                  this.numArr[4].visible = true
-                }, 0);
-              }
+                this.lineArr[1].visible = true
+                this.numArr[4].visible = true
+              }, 0);
             }
           }
 
@@ -203,17 +181,16 @@ export default class Start extends Common {
     }).on('pointerup', () => {
       this.wh.scale.set(1)
       this.wh.visible = false
-      
-      this.ani = getAnimation('animation_zaijinyibujiaoshi')
+      this.ani = getAnimation('animation_xinzhitansuo2')
       this._stage.addChild(this.ani)
       this.ani.state.setAnimation(0, '3', false).listener = {
         complete: () => {
           this.time4 = setTimeout(() => {
             this._stage.removeChild(this.ani)
-            
+
             this.wh.visible = true
             this.wh.interactive = false
-            this.wh.texture = res['image_22'].texture
+            this.wh.texture = res['image_26'].texture
           }, 0);
         }
       }
@@ -223,28 +200,11 @@ export default class Start extends Common {
     this.goodsArr.map((v, i) => {
       v.on('pointertap', () => {
         getSound('audio_click').play()
-        if (i === 2) {
-          v.visible = false
-          this.ani = getAnimation('animation_zaijinyibujiaoshi')
-          this._stage.addChild(this.ani)
-          this.ani.state.setAnimation(0, 'in2', false).listener = {
-            complete: () => {
-              this.time5 = setTimeout(() => {
-                this._stage.removeChild(this.ani)
-                
-                this.goodsArr.map((v, i) => { if (i > 2) v.visible = true })
-              }, 0);
-            }
-          }
-
-
-        } else if (i > 2) {
-          v.flag = !v.flag
-          if (v.flag) {
-            v.texture = res['image_goods2'].texture
-          } else {
-            v.texture = res['image_goods2X'].texture
-          }
+        v.flag = !v.flag
+        if (v.flag) {
+          v.texture = res['image_goods1'].texture
+        } else {
+          v.texture = res['image_goods1X'].texture
         }
       })
     })
@@ -253,9 +213,10 @@ export default class Start extends Common {
     this.red.on('pointertap', () => {
       getSound('audio_click').play()
       this._stage.removeChild(this.red)
-      this.ani = getAnimation('animation_zaijinyibujiaoshi')
+
+      this.ani = getAnimation('animation_xinzhitansuo2')
       this._stage.addChild(this.ani)
-      this.ani.state.setAnimation(0, 'in1', false).listener = {
+      this.ani.state.setAnimation(0, 'in', false).listener = {
         complete: () => {
           this.time = setTimeout(() => {
             this._stage.removeChild(this.ani)
@@ -264,7 +225,7 @@ export default class Start extends Common {
             this.numArr[0].visible = true
             this.numArr[1].visible = true
             this.markArr.map(v => { v.visible = true })
-            this.goodsArr.map((v, i) => { v.visible = i < 3 ? true : false })
+            this.goodsArr.map(v => { v.visible = true })
           }, 0);
         }
       }

@@ -12,115 +12,94 @@ xingxing
   orig: 77, 77
   offset: 0, 0
   index: -1
-=====zaijinyibujiaoshi=====
+=====xinzhitansuo2=====
 
-zaijinyibujiaoshi.png
+xinzhitansuo2.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-a1
-  rotate: false
-  xy: 2, 166
-  size: 197, 197
-  orig: 197, 197
-  offset: 0, 0
-  index: -1
-a2
-  rotate: false
-  xy: 326, 429
-  size: 197, 197
-  orig: 197, 197
-  offset: 0, 0
-  index: -1
-b1
-  rotate: true
-  xy: 201, 166
-  size: 197, 189
-  orig: 197, 189
-  offset: 0, 0
-  index: -1
-b2
-  rotate: true
-  xy: 392, 231
-  size: 196, 189
-  orig: 196, 189
-  offset: 0, 0
-  index: -1
-b3
-  rotate: false
-  xy: 839, 802
-  size: 119, 115
-  orig: 119, 115
-  offset: 0, 0
-  index: -1
-b4
-  rotate: false
-  xy: 2, 2
-  size: 119, 115
-  orig: 119, 115
-  offset: 0, 0
-  index: -1
-b5
-  rotate: false
-  xy: 123, 3
-  size: 119, 114
-  orig: 119, 114
-  offset: 0, 0
-  index: -1
 c1
   rotate: false
-  xy: 569, 770
-  size: 268, 251
-  orig: 268, 251
+  xy: 2, 2
+  size: 144, 156
+  orig: 144, 156
   offset: 0, 0
   index: -1
 c2
-  rotate: true
-  xy: 960, 813
-  size: 104, 62
-  orig: 104, 62
+  rotate: false
+  xy: 436, 227
+  size: 143, 156
+  orig: 143, 156
   offset: 0, 0
   index: -1
 c3
+  rotate: false
+  xy: 581, 227
+  size: 143, 156
+  orig: 143, 156
+  offset: 0, 0
+  index: -1
+c4
+  rotate: false
+  xy: 2, 160
+  size: 233, 253
+  orig: 233, 253
+  offset: 0, 0
+  index: -1
+c5
+  rotate: false
+  xy: 477, 430
+  size: 232, 253
+  orig: 232, 253
+  offset: 0, 0
+  index: -1
+d1
+  rotate: false
+  xy: 2, 415
+  size: 473, 268
+  orig: 473, 268
+  offset: 0, 0
+  index: -1
+d2
   rotate: true
-  xy: 960, 707
-  size: 104, 62
-  orig: 104, 62
+  xy: 910, 584
+  size: 99, 59
+  orig: 99, 59
+  offset: 0, 0
+  index: -1
+d3
+  rotate: true
+  xy: 148, 59
+  size: 99, 59
+  orig: 99, 59
+  offset: 0, 0
+  index: -1
+e1
+  rotate: false
+  xy: 237, 216
+  size: 197, 197
+  orig: 197, 197
+  offset: 0, 0
+  index: -1
+e2
+  rotate: false
+  xy: 711, 486
+  size: 197, 197
+  orig: 197, 197
   offset: 0, 0
   index: -1
 jia
   rotate: false
-  xy: 2, 119
-  size: 412, 45
-  orig: 420, 131
-  offset: 4, 51
+  xy: 477, 385
+  size: 418, 43
+  orig: 425, 125
+  offset: 4, 48
   index: -1
-ss1
+ssa
   rotate: false
-  xy: 2, 365
-  size: 322, 261
-  orig: 322, 261
-  offset: 0, 0
-  index: -1
-ss2
-  rotate: true
-  xy: 569, 656
-  size: 112, 261
-  orig: 112, 261
-  offset: 0, 0
-  index: -1
-ss3
-  rotate: true
-  xy: 839, 919
-  size: 102, 183
-  orig: 102, 183
-  offset: 0, 0
-  index: -1
-ying
-  rotate: false
-  xy: 2, 628
-  size: 565, 393
-  orig: 565, 393
+  xy: 2, 685
+  size: 1003, 324
+  orig: 1003, 324
   offset: 0, 0
   index: -1
