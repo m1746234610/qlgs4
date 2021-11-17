@@ -87,14 +87,15 @@ export default class Start extends Common {
         this.equationArr[0].visible = true
         // # not defined
 
-      } else if (this.bgColor.num === 1) {
-        this.equationArr[1].visible = true
-      } else if (this.bgColor.num === 2) {
-        this.equationArr[2].visible = true
-      } else if (this.bgColor.num === 3) {
-        this.bgColor.interactive = false
-        this.equationArr[3].visible = true
+      } else {
+        for (let j = 1; j < this.equationArr.length; j++) {
+          if (this.bgColor.num === j) {
+            this.equationArr[j].visible = true
+            break
+          }
+        }
       }
+      if (this.bgColor.num === 3) this.bgColor.interactive = false
       this.bgColor.num++
     })
 
