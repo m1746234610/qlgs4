@@ -1,0 +1,75 @@
+{
+"skeleton": { "hash": "6ekqlTCq97WjAGtuL7wmIc2ZNII", "spine": "3.7.94", "width": 1920, "height": 1080, "images": "./images/", "audio": "/Users/hc-101/Desktop/秋季/21年 秋季 二年级A+ 时间规划师/动效/30页/爱豆" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "lngzong", "parent": "root", "x": 1002.3, "y": -367.24, "color": "000000ff" },
+	{ "name": "guang0001", "parent": "lngzong", "x": -295.67, "y": -15.08, "scaleX": 4.251, "scaleY": 2.514 }
+],
+"slots": [
+	{ "name": "第六讲头脑热身_教师课件-01", "bone": "root" },
+	{ "name": "0-04", "bone": "lngzong", "attachment": "ban" },
+	{ "name": "guang0001", "bone": "guang0001" }
+],
+"skins": {
+	"default": {
+		"0-04": {
+			"ban": { "x": -302.37, "y": 41.75, "width": 743, "height": 134 }
+		},
+		"guang0001": {
+			"guang0008": { "x": -1.32, "y": 88.07, "width": 162, "height": 190 },
+			"guang0009": { "x": -1.32, "y": 88.07, "width": 152, "height": 203 },
+			"guang0010": { "x": -1.32, "y": 88.07, "width": 151, "height": 203 },
+			"guang0011": { "x": -1.32, "y": 88.07, "width": 156, "height": 203 },
+			"guang0012": { "x": -1.32, "y": 88.07, "width": 171, "height": 203 },
+			"guang0013": { "x": -1.32, "y": 88.07, "width": 171, "height": 204 },
+			"guang0014": { "x": -1.32, "y": 88.07, "width": 171, "height": 206 },
+			"guang0015": { "x": -1.32, "y": 88.07, "width": 171, "height": 207 },
+			"guang0016": { "x": -1.32, "y": 88.07, "width": 171, "height": 201 },
+			"guang0017": { "x": -1.32, "y": 88.07, "width": 141, "height": 199 },
+			"guang0018": { "x": -1.32, "y": 88.07, "width": 126, "height": 200 },
+			"guang0019": { "x": -1.32, "y": 88.07, "width": 114, "height": 204 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"0-04": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"guang0001": {
+				"attachment": [
+					{ "time": 0, "name": "guang0008" },
+					{ "time": 0.0667, "name": "guang0009" },
+					{ "time": 0.1667, "name": "guang0010" },
+					{ "time": 0.2333, "name": "guang0011" },
+					{ "time": 0.3333, "name": "guang0012" },
+					{ "time": 0.4, "name": "guang0013" },
+					{ "time": 0.5, "name": "guang0014" },
+					{ "time": 0.5667, "name": "guang0015" },
+					{ "time": 0.6667, "name": "guang0016" },
+					{ "time": 0.7333, "name": "guang0017" },
+					{ "time": 0.8333, "name": "guang0018" },
+					{ "time": 0.9, "name": "guang0019" },
+					{ "time": 1, "name": null }
+				]
+			},
+			"第六讲头脑热身_教师课件-01": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"guang0001": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -18.9 }
+				]
+			}
+		}
+	}
+}
+}

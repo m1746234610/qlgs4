@@ -84,9 +84,13 @@ export default class Start extends Common {
       getSound('audio_click').play()
       if (this.bgColor.num === 0) {
         this.bgColor.interactive = this.num === this.shapeArr.length ? true : false
-        this.equationArr[0].visible = true
-        // # not defined
-
+        this.ani = getAnimation('animation_01')
+        this._stage.addChild(this.ani)
+        this.ani.state.setAnimation(0, 'animation', false).listener = {
+          complete: () => {
+            this.equationArr[0].visible = true
+          }
+        }
       } else {
         for (let j = 1; j < this.equationArr.length; j++) {
           if (this.bgColor.num === j) {

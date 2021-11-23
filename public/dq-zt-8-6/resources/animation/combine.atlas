@@ -1,0 +1,147 @@
+=====kejian6=====
+
+kejian6.png
+size: 1732,1732
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ban1
+  rotate: false
+  xy: 2, 886
+  size: 1429, 844
+  orig: 1429, 844
+  offset: 0, 0
+  index: -1
+jizi
+  rotate: true
+  xy: 2, 2
+  size: 882, 1014
+  orig: 882, 1014
+  offset: 0, 0
+  index: -1
+kaiguan
+  rotate: true
+  xy: 1590, 240
+  size: 139, 138
+  orig: 139, 138
+  offset: 0, 0
+  index: -1
+light
+  rotate: false
+  xy: 1238, 148
+  size: 350, 350
+  orig: 352, 352
+  offset: 1, 1
+  index: -1
+qiu
+  rotate: false
+  xy: 1433, 1184
+  size: 114, 114
+  orig: 114, 114
+  offset: 0, 0
+  index: -1
+quan2
+  rotate: false
+  xy: 1238, 500
+  size: 384, 384
+  orig: 384, 384
+  offset: 0, 0
+  index: -1
+suanshi2 (1)
+  rotate: true
+  xy: 1018, 63
+  size: 821, 60
+  orig: 828, 117
+  offset: 4, 35
+  index: -1
+suanshi2 (10)
+  rotate: false
+  xy: 1433, 1075
+  size: 106, 107
+  orig: 106, 107
+  offset: 0, 0
+  index: -1
+suanshi2 (2)
+  rotate: true
+  xy: 1590, 148
+  size: 90, 91
+  orig: 90, 117
+  offset: 0, 11
+  index: -1
+suanshi2 (3)
+  rotate: false
+  xy: 1157, 23
+  size: 228, 66
+  orig: 228, 66
+  offset: 0, 0
+  index: -1
+suanshi2 (4)
+  rotate: true
+  xy: 1080, 91
+  size: 793, 156
+  orig: 793, 156
+  offset: 0, 0
+  index: -1
+suanshi2 (5)
+  rotate: false
+  xy: 1433, 1444
+  size: 141, 142
+  orig: 141, 142
+  offset: 0, 0
+  index: -1
+suanshi2 (6)
+  rotate: false
+  xy: 1387, 4
+  size: 142, 142
+  orig: 142, 142
+  offset: 0, 0
+  index: -1
+suanshi2 (7)
+  rotate: false
+  xy: 1531, 4
+  size: 142, 142
+  orig: 142, 142
+  offset: 0, 0
+  index: -1
+suanshi2 (8)
+  rotate: false
+  xy: 1433, 1588
+  size: 142, 142
+  orig: 142, 142
+  offset: 0, 0
+  index: -1
+suanshi2 (9)
+  rotate: false
+  xy: 1433, 1300
+  size: 141, 142
+  orig: 141, 142
+  offset: 0, 0
+  index: -1
+xingxing
+  rotate: false
+  xy: 1080, 14
+  size: 75, 75
+  orig: 77, 77
+  offset: 1, 1
+  index: -1
+ying
+  rotate: true
+  xy: 1624, 381
+  size: 1349, 91
+  orig: 1349, 91
+  offset: 0, 0
+  index: -1
+=====xingxing=====
+
+xingxing.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xingxing
+  rotate: false
+  xy: 2, 2
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1

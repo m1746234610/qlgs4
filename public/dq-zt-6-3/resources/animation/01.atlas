@@ -1,112 +1,97 @@
-=====01=====
 
 01.png
-size: 927,925
+size: 747,747
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 ban
   rotate: false
-  xy: 2, 789
-  size: 923, 134
-  orig: 923, 134
+  xy: 2, 611
+  size: 743, 134
+  orig: 743, 134
   offset: 0, 0
   index: -1
 guang0008
   rotate: false
-  xy: 348, 392
+  xy: 2, 2
   size: 162, 190
   orig: 162, 190
   offset: 0, 0
   index: -1
 guang0009
-  rotate: false
-  xy: 175, 175
+  rotate: true
+  xy: 521, 457
   size: 152, 203
   orig: 152, 203
   offset: 0, 0
   index: -1
 guang0010
-  rotate: false
-  xy: 506, 584
+  rotate: true
+  xy: 521, 304
   size: 151, 203
   orig: 151, 203
   offset: 0, 0
   index: -1
 guang0011
   rotate: false
-  xy: 348, 584
+  xy: 348, 203
   size: 156, 203
   orig: 156, 203
   offset: 0, 0
   index: -1
 guang0012
   rotate: false
-  xy: 2, 167
+  xy: 175, 200
   size: 171, 203
   orig: 171, 203
   offset: 0, 0
   index: -1
 guang0013
   rotate: false
-  xy: 175, 583
+  xy: 175, 405
   size: 171, 204
   orig: 171, 204
   offset: 0, 0
   index: -1
 guang0014
   rotate: false
-  xy: 2, 372
+  xy: 2, 194
   size: 171, 206
   orig: 171, 206
   offset: 0, 0
   index: -1
 guang0015
   rotate: false
-  xy: 2, 580
+  xy: 2, 402
   size: 171, 207
   orig: 171, 207
   offset: 0, 0
   index: -1
 guang0016
   rotate: false
-  xy: 175, 380
+  xy: 348, 408
   size: 171, 201
   orig: 171, 201
   offset: 0, 0
   index: -1
 guang0017
   rotate: false
-  xy: 659, 588
+  xy: 348, 2
   size: 141, 199
   orig: 141, 199
   offset: 0, 0
   index: -1
 guang0018
-  rotate: false
-  xy: 512, 382
+  rotate: true
+  xy: 491, 60
   size: 126, 200
   orig: 126, 200
   offset: 0, 0
   index: -1
 guang0019
-  rotate: false
-  xy: 802, 583
+  rotate: true
+  xy: 506, 188
   size: 114, 204
   orig: 114, 204
-  offset: 0, 0
-  index: -1
-=====xingxing=====
-
-xingxing.png
-size: 128,128
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
-xingxing
-  rotate: false
-  xy: 2, 2
-  size: 77, 77
-  orig: 77, 77
   offset: 0, 0
   index: -1

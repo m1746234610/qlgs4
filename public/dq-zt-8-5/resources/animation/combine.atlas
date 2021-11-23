@@ -1,0 +1,182 @@
+=====kejian5=====
+
+kejian5.png
+size: 1818,1816
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ban
+  rotate: false
+  xy: 2, 980
+  size: 1361, 834
+  orig: 1361, 834
+  offset: 0, 0
+  index: -1
+banying
+  rotate: true
+  xy: 1365, 509
+  size: 1305, 92
+  orig: 1305, 92
+  offset: 0, 0
+  index: -1
+jizi
+  rotate: true
+  xy: 2, 96
+  size: 882, 1014
+  orig: 882, 1014
+  offset: 0, 0
+  index: -1
+kaiguan
+  rotate: false
+  xy: 1459, 772
+  size: 139, 138
+  orig: 139, 138
+  offset: 0, 0
+  index: -1
+light
+  rotate: false
+  xy: 1459, 912
+  size: 350, 350
+  orig: 352, 352
+  offset: 1, 1
+  index: -1
+qiu
+  rotate: false
+  xy: 1662, 1484
+  size: 114, 114
+  orig: 114, 114
+  offset: 0, 0
+  index: -1
+quan2
+  rotate: false
+  xy: 1306, 123
+  size: 384, 384
+  orig: 384, 384
+  offset: 0, 0
+  index: -1
+suanshi (1)
+  rotate: false
+  xy: 2, 48
+  size: 927, 46
+  orig: 932, 88
+  offset: 2, 26
+  index: -1
+suanshi (2)
+  rotate: false
+  xy: 1600, 804
+  size: 107, 106
+  orig: 107, 106
+  offset: 0, 0
+  index: -1
+suanshi (3)
+  rotate: false
+  xy: 1709, 804
+  size: 107, 106
+  orig: 107, 106
+  offset: 0, 0
+  index: -1
+suanshi (4)
+  rotate: false
+  xy: 1662, 1268
+  size: 106, 106
+  orig: 106, 106
+  offset: 0, 0
+  index: -1
+suanshi (5)
+  rotate: false
+  xy: 1306, 15
+  size: 106, 106
+  orig: 106, 106
+  offset: 0, 0
+  index: -1
+suanshi (6)
+  rotate: false
+  xy: 1459, 530
+  size: 107, 106
+  orig: 107, 106
+  offset: 0, 0
+  index: -1
+suanshi (7)
+  rotate: false
+  xy: 1662, 1376
+  size: 107, 106
+  orig: 107, 106
+  offset: 0, 0
+  index: -1
+suanshi (8)
+  rotate: false
+  xy: 1459, 638
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+xian (1)
+  rotate: true
+  xy: 1662, 1600
+  size: 214, 116
+  orig: 214, 116
+  offset: 0, 0
+  index: -1
+xian (2)
+  rotate: true
+  xy: 1306, 919
+  size: 59, 52
+  orig: 61, 74
+  offset: 1, 16
+  index: -1
+xian (3)
+  rotate: false
+  xy: 1599, 69
+  size: 59, 52
+  orig: 62, 74
+  offset: 2, 16
+  index: -1
+xian (4)
+  rotate: true
+  xy: 1306, 858
+  size: 59, 52
+  orig: 62, 74
+  offset: 2, 15
+  index: -1
+xian (5)
+  rotate: true
+  xy: 1018, 73
+  size: 905, 286
+  orig: 905, 286
+  offset: 0, 0
+  index: -1
+xian (6)
+  rotate: true
+  xy: 1459, 1264
+  size: 550, 201
+  orig: 550, 201
+  offset: 0, 0
+  index: -1
+xingxing
+  rotate: false
+  xy: 1522, 46
+  size: 75, 75
+  orig: 77, 77
+  offset: 1, 1
+  index: -1
+zhengque
+  rotate: false
+  xy: 1414, 15
+  size: 106, 106
+  orig: 106, 106
+  offset: 0, 0
+  index: -1
+=====xingxing=====
+
+xingxing.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xingxing
+  rotate: false
+  xy: 2, 2
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1
