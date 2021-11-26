@@ -1,0 +1,217 @@
+=====kejian3=====
+
+kejian3.png
+size: 1153,1152
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: true
+  xy: 463, 375
+  size: 96, 97
+  orig: 96, 97
+  offset: 0, 0
+  index: -1
+19
+  rotate: false
+  xy: 575, 494
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+2
+  rotate: false
+  xy: 946, 79
+  size: 96, 97
+  orig: 96, 97
+  offset: 0, 0
+  index: -1
+4
+  rotate: false
+  xy: 737, 494
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+50
+  rotate: false
+  xy: 946, 336
+  size: 156, 156
+  orig: 156, 156
+  offset: 0, 0
+  index: -1
+8
+  rotate: false
+  xy: 899, 494
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+deng
+  rotate: false
+  xy: 1086, 975
+  size: 64, 46
+  orig: 73, 136
+  offset: 5, 53
+  index: -1
+guangxiao (1)
+  rotate: true
+  xy: 2, 12
+  size: 459, 170
+  orig: 574, 170
+  offset: 58, 0
+  index: -1
+guangxiao (2)
+  rotate: true
+  xy: 526, 344
+  size: 29, 32
+  orig: 89, 92
+  offset: 30, 30
+  index: -1
+guangxiao (3)
+  rotate: false
+  xy: 1086, 656
+  size: 42, 121
+  orig: 97, 178
+  offset: 28, 29
+  index: -1
+guangxiao (4)
+  rotate: true
+  xy: 1086, 1095
+  size: 55, 65
+  orig: 101, 113
+  offset: 23, 24
+  index: -1
+guangxiao (5)
+  rotate: true
+  xy: 526, 2
+  size: 30, 41
+  orig: 93, 104
+  offset: 31, 32
+  index: -1
+guangxiao (6)
+  rotate: true
+  xy: 174, 375
+  size: 117, 287
+  orig: 169, 362
+  offset: 21, 56
+  index: -1
+hu (1)
+  rotate: true
+  xy: 491, 473
+  size: 288, 82
+  orig: 288, 82
+  offset: 0, 0
+  index: -1
+hu (2)
+  rotate: true
+  xy: 579, 733
+  size: 417, 505
+  orig: 417, 505
+  offset: 0, 0
+  index: -1
+huang (1)
+  rotate: false
+  xy: 2, 494
+  size: 487, 374
+  orig: 488, 374
+  offset: 1, 0
+  index: -1
+huang (2)
+  rotate: false
+  xy: 1130, 672
+  size: 13, 105
+  orig: 13, 105
+  offset: 0, 0
+  index: -1
+huang (3)
+  rotate: true
+  xy: 1086, 850
+  size: 70, 51
+  orig: 73, 72
+  offset: 2, 15
+  index: -1
+jia
+  rotate: false
+  xy: 1086, 1023
+  size: 64, 70
+  orig: 72, 136
+  offset: 4, 41
+  index: -1
+lan (1)
+  rotate: false
+  xy: 1061, 549
+  size: 87, 105
+  orig: 87, 105
+  offset: 0, 0
+  index: -1
+lan (2)
+  rotate: false
+  xy: 1086, 922
+  size: 57, 51
+  orig: 61, 72
+  offset: 2, 15
+  index: -1
+lan (3)
+  rotate: false
+  xy: 2, 870
+  size: 575, 280
+  orig: 575, 280
+  offset: 0, 0
+  index: -1
+light
+  rotate: false
+  xy: 174, 23
+  size: 350, 350
+  orig: 352, 352
+  offset: 1, 1
+  index: -1
+lv (1)
+  rotate: false
+  xy: 491, 763
+  size: 86, 105
+  orig: 86, 105
+  offset: 0, 0
+  index: -1
+lv (2)
+  rotate: false
+  xy: 562, 34
+  size: 382, 437
+  orig: 383, 437
+  offset: 0, 0
+  index: -1
+lv (3)
+  rotate: true
+  xy: 1086, 779
+  size: 69, 51
+  orig: 74, 72
+  offset: 3, 15
+  index: -1
+wen
+  rotate: false
+  xy: 946, 178
+  size: 156, 156
+  orig: 156, 156
+  offset: 0, 0
+  index: -1
+xingxing
+  rotate: false
+  xy: 575, 656
+  size: 75, 75
+  orig: 77, 77
+  offset: 1, 1
+  index: -1
+=====xingxing=====
+
+xingxing.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xingxing
+  rotate: false
+  xy: 2, 2
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1
