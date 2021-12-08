@@ -61,11 +61,11 @@ suanshi2 (10)
   offset: 0, 0
   index: -1
 suanshi2 (2)
-  rotate: true
-  xy: 1590, 148
-  size: 90, 91
-  orig: 90, 117
-  offset: 0, 11
+  rotate: false
+  xy: 1433, 982
+  size: 91, 91
+  orig: 91, 117
+  offset: 0, 20
   index: -1
 suanshi2 (3)
   rotate: false

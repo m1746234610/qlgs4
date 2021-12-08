@@ -35,7 +35,9 @@ export default class Start extends Common {
     this.wh = createSprite('image_wh')
 
     // 红色
-    this.red = createSprite('image_red')
+    this.red = new PIXI.Graphics()
+    this.red.beginFill(0xffffff, 0)
+    this.red.drawRect(0, 0, 1920, 1080)
 
 
     this.eventHandle()
@@ -46,12 +48,9 @@ export default class Start extends Common {
     this.yes2 = false
     this._stage.addChild(createSprite('image_bg'))
 
-    this.red.alpha = 0
-    this.red.anchor.set(0.5)
     this.red.cursor = 'pointer'
     this.red.interactive = true
     this._stage.addChild(this.red)
-    this.red.position.set(930, 511.5)
 
     // 按钮
     this.btnArr.map((v, i) => {
@@ -109,15 +108,13 @@ export default class Start extends Common {
       } else {
         v.texture = res['image_goods2'].texture
         if (i < 8) {
-          v.position.set(919 + (i - 3) * 114, 163.5)
+          v.position.set(920 + (i - 3) * 114, 164)
         } else {
-          v.position.set(919 + (i - 8) * 114, 361.5)
+          v.position.set(920 + (i - 8) * 114, 362)
         }
       }
 
-      if (i > 1) {
-        v.interactive = true
-      }
+      if (i > 1) v.interactive = true
     })
     this.goodsArr[0].position.set(500, 202)
     this.goodsArr[1].position.set(500 + 210, 202)
@@ -154,6 +151,7 @@ export default class Start extends Common {
         v.scale.set(0.9)
       }).on('pointerup', () => {
         v.scale.set(1)
+        v.interactive = false
         if (i === 0) {
           if (!this.yes) {
             this.yes = true
@@ -177,6 +175,8 @@ export default class Start extends Common {
         } else if (i === 1 || i === 3) {
           if (!this.yes2) {
             this.yes2 = true
+            this.numArr[1].interactive = false
+            this.numArr[2].interactive = false
 
             this.ani = getAnimation('animation_zaijinyibujiaoshi')
             this._stage.addChild(this.ani)
@@ -191,7 +191,6 @@ export default class Start extends Common {
               }
             }
           }
-
         }
       })
     })
@@ -202,21 +201,22 @@ export default class Start extends Common {
       this.wh.scale.set(0.9)
     }).on('pointerup', () => {
       this.wh.scale.set(1)
-      this.wh.visible = false
-      
-      this.ani = getAnimation('animation_zaijinyibujiaoshi')
-      this._stage.addChild(this.ani)
-      this.ani.state.setAnimation(0, '3', false).listener = {
-        complete: () => {
-          this.time4 = setTimeout(() => {
-            this._stage.removeChild(this.ani)
-            
-            this.wh.visible = true
-            this.wh.interactive = false
-            this.wh.texture = res['image_22'].texture
-          }, 0);
-        }
-      }
+      // this.wh.visible = false
+      this.wh.interactive = false
+      this.wh.texture = res['image_22'].texture
+      // this.ani = getAnimation('animation_zaijinyibujiaoshi')
+      // this._stage.addChild(this.ani)
+      // this.ani.state.setAnimation(0, '3', false).listener = {
+      //   complete: () => {
+      //     this.time4 = setTimeout(() => {
+      //       this._stage.removeChild(this.ani)
+
+      //       this.wh.visible = true
+      //       this.wh.interactive = false
+      //       this.wh.texture = res['image_22'].texture
+      //     }, 0);
+      //   }
+      // }
     })
 
     // 物品
@@ -231,7 +231,7 @@ export default class Start extends Common {
             complete: () => {
               this.time5 = setTimeout(() => {
                 this._stage.removeChild(this.ani)
-                
+
                 this.goodsArr.map((v, i) => { if (i > 2) v.visible = true })
               }, 0);
             }
@@ -253,21 +253,28 @@ export default class Start extends Common {
     this.red.on('pointertap', () => {
       getSound('audio_click').play()
       this._stage.removeChild(this.red)
-      this.ani = getAnimation('animation_zaijinyibujiaoshi')
-      this._stage.addChild(this.ani)
-      this.ani.state.setAnimation(0, 'in1', false).listener = {
-        complete: () => {
-          this.time = setTimeout(() => {
-            this._stage.removeChild(this.ani)
 
-            this.wh.visible = true
-            this.numArr[0].visible = true
-            this.numArr[1].visible = true
-            this.markArr.map(v => { v.visible = true })
-            this.goodsArr.map((v, i) => { v.visible = i < 3 ? true : false })
-          }, 0);
-        }
-      }
+      this.wh.visible = true
+      this.numArr[0].visible = true
+      this.numArr[1].visible = true
+      this.markArr.map(v => { v.visible = true })
+      this.goodsArr.map((v, i) => { v.visible = i < 3 ? true : false })
+
+      // this.ani = getAnimation('animation_zaijinyibujiaoshi')
+      // this._stage.addChild(this.ani)
+      // this.ani.state.setAnimation(0, 'in1', false).listener = {
+      //   complete: () => {
+      //     this.time = setTimeout(() => {
+      //       this._stage.removeChild(this.ani)
+
+      //       this.wh.visible = true
+      //       this.numArr[0].visible = true
+      //       this.numArr[1].visible = true
+      //       this.markArr.map(v => { v.visible = true })
+      //       this.goodsArr.map((v, i) => { v.visible = i < 3 ? true : false })
+      //     }, 0);
+      //   }
+      // }
     })
   }
 

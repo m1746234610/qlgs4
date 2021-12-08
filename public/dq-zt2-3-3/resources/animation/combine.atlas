@@ -1,0 +1,42 @@
+=====nangua001=====
+
+nangua001.png
+size: 72,70
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+nangua
+  rotate: false
+  xy: 2, 12
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+=====nangua002=====
+
+nangua002.png
+size: 72,70
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+nangua
+  rotate: false
+  xy: 2, 12
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+=====xingxing=====
+
+xingxing.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xingxing
+  rotate: false
+  xy: 2, 2
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1

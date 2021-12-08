@@ -16,7 +16,7 @@ export default class Start extends Common {
     this.btnArr = [createSprite('image_btn1')]
 
     // 数字
-    this.numArr = [createSprite('image_ip1'), createSprite('image_ip2'), createSprite('image_ip3'), createSprite('image_ip4'), createSprite('image_ip5')]
+    this.numArr = [createSprite('image_ip1'), createSprite('image_ip2'), createSprite('image_ip6'), createSprite('image_ip6'), createSprite('image_ip6')]
 
     // 符号
     this.markArr = [createSprite('image_mark')]
@@ -38,7 +38,9 @@ export default class Start extends Common {
     this.wh = createSprite('image_wh')
 
     // 红色
-    this.red = createSprite('image_red')
+    this.red = new PIXI.Graphics()
+    this.red.beginFill(0xffffff, 0)
+    this.red.drawRect(0, 0, 1920, 1080)
 
 
     this.eventHandle()
@@ -50,12 +52,9 @@ export default class Start extends Common {
 
     this._stage.addChild(createSprite('image_bg'))
 
-    this.red.alpha = 0
-    this.red.anchor.set(0.5)
     this.red.cursor = 'pointer'
     this.red.interactive = true
     this._stage.addChild(this.red)
-    this.red.position.set(930, 511.5)
 
     // 按钮
     this.btnArr.map((v, i) => {
@@ -202,21 +201,21 @@ export default class Start extends Common {
       this.wh.scale.set(0.9)
     }).on('pointerup', () => {
       this.wh.scale.set(1)
-      this.wh.visible = false
+      // this.wh.visible = false
       this.wh.interactive = false
+      this.wh.texture = res['image_28'].texture
+      // this.ani = getAnimation('animation_yongwangzhiqian')
+      // this._stage.addChild(this.ani)
+      // this.ani.state.setAnimation(0, '3', false).listener = {
+      //   complete: () => {
+      //     this.time4 = setTimeout(() => {
+      //       this._stage.removeChild(this.ani)
 
-      this.ani = getAnimation('animation_yongwangzhiqian')
-      this._stage.addChild(this.ani)
-      this.ani.state.setAnimation(0, '3', false).listener = {
-        complete: () => {
-          this.time4 = setTimeout(() => {
-            this._stage.removeChild(this.ani)
-
-            this.wh.visible = true
-            this.wh.texture = res['image_28'].texture
-          }, 0);
-        }
-      }
+      //       this.wh.visible = true
+      //       this.wh.texture = res['image_28'].texture
+      //     }, 0);
+      //   }
+      // }
 
     })
 
@@ -252,22 +251,27 @@ export default class Start extends Common {
     this.red.on('pointertap', () => {
       getSound('audio_click').play()
       this._stage.removeChild(this.red)
+      this.wh.visible = true
+      this.numArr[0].visible = true
+      this.numArr[1].visible = true
+      this.markArr.map(v => { v.visible = true })
+      this.goodsArr.map((v, i) => { v.visible = i < 9 ? true : false })
 
-      this.ani = getAnimation('animation_yongwangzhiqian')
-      this._stage.addChild(this.ani)
-      this.ani.state.setAnimation(0, 'in1', false).listener = {
-        complete: () => {
-          this.time = setTimeout(() => {
-            this._stage.removeChild(this.ani)
+      // this.ani = getAnimation('animation_yongwangzhiqian')
+      // this._stage.addChild(this.ani)
+      // this.ani.state.setAnimation(0, 'in1', false).listener = {
+      //   complete: () => {
+      //     this.time = setTimeout(() => {
+      //       this._stage.removeChild(this.ani)
 
-            this.wh.visible = true
-            this.numArr[0].visible = true
-            this.numArr[1].visible = true
-            this.markArr.map(v => { v.visible = true })
-            this.goodsArr.map((v, i) => { v.visible = i < 9 ? true : false })
-          }, 0);
-        }
-      }
+      //       this.wh.visible = true
+      //       this.numArr[0].visible = true
+      //       this.numArr[1].visible = true
+      //       this.markArr.map(v => { v.visible = true })
+      //       this.goodsArr.map((v, i) => { v.visible = i < 9 ? true : false })
+      //     }, 0);
+      //   }
+      // }
     })
   }
 

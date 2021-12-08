@@ -11,10 +11,13 @@ export default class Start extends Common {
     this.btn = createSprite('image_btn1')
 
     // 三角形
-    this.shapeArr = [createSprite('image_shape'), createSprite('image_shape'), createSprite('image_shape'), createSprite('image_shape'), createSprite('image_shape')]
+    this.shapeArr = [createSprite('image_shape1'), createSprite('image_shape1'), createSprite('image_shape1'), createSprite('image_shape1'), createSprite('image_shape2')]
 
     // 算式
     this.equationArr = [createSprite('image_equation1'), createSprite('image_equation2'), createSprite('image_equation3'), createSprite('image_equation4')]
+
+    // 数字
+    this.numArr = [createSprite('image_8'), createSprite('image_18'), createSprite('image_28'), createSprite('image_38')]
 
     // 点击区域
     this.bgColor = new PIXI.Graphics()
@@ -27,6 +30,7 @@ export default class Start extends Common {
 
   init() {
     this.num = 0
+    this.num2 = 0
     this._stage.addChild(createSprite('image_bg'))
 
     // 按钮
@@ -38,17 +42,18 @@ export default class Start extends Common {
 
     // 三角形
     this.shapeArr.map((v, i) => {
+      v.visible = false
       v.anchor.set(0.5)
       v.cursor = 'pointer'
       v.interactive = true
-      v.texture = res['image_shape'].texture
+      v.texture = res[`image_shape${i === 4 ? 2 : 1}`].texture
       this._stage.addChild(v)
       v.position.set(625 + i * 180, 179)
     })
 
     // 算式
     this.equationArr.map((v, i) => {
-      v.visible = false
+      v.visible = i === 0 ? true : false
       v.anchor.set(0.5)
       this._stage.addChild(v)
       if (i < 1) {
@@ -59,12 +64,22 @@ export default class Start extends Common {
       }
     })
 
+    // 数字
+    this.numArr.map((v, i) => {
+      v.anchor.set(0.5)
+      v.cursor = 'pointer'
+      v.interactive = false
+      this._stage.addChild(v)
+      v.position.set(630 + i * 183, 333)
+    })
+
     // 点击区域
-    this.bgColor.num = 0
+    this.bgColor.num = 1
     this.bgColor.cursor = 'pointer'
     this.bgColor.interactive = true
     this._stage.addChild(this.bgColor)
 
+    this.tur = false
   }
 
   eventHandle() {
@@ -82,37 +97,38 @@ export default class Start extends Common {
 
     this.bgColor.on('pointertap', () => {
       getSound('audio_click').play()
-
-      if (this.bgColor.num === 0) {
-        this.bgColor.interactive = this.num === this.shapeArr.length ? true : false
-        this.ani = getAnimation('animation_01')
-        this._stage.addChild(this.ani)
-        this.ani.state.setAnimation(0, 'animation', false).listener = {
-          complete: () => {
-            this.equationArr[0].visible = true
-          }
-        }
-      } else {
-        for (let j = 1; j < this.equationArr.length; j++) {
-          if (this.bgColor.num === j) {
-            this.equationArr[j].visible = true
-            break
-          }
+      for (let j = 1; j < this.equationArr.length; j++) {
+        if (this.bgColor.num === j) {
+          this.equationArr[j].visible = true
+          if (j === 3) this.numArr.map(v => v.interactive = true)
+          break
         }
       }
       if (this.bgColor.num === 3) this.bgColor.interactive = false
       this.bgColor.num++
     })
 
-    // 三角形 
-    this.shapeArr.map((v, i) => {
+    // 三角形
+    this.shapeArr[4].on('pointertap', () => {
+      getSound('audio_true').play()
+      this.shapeArr[4].scale.set(1)
+      this.shapeArr[4].interactive = false
+      this.shapeArr[4].texture = res['image_shape2L'].texture
+
+      this.ani = getAnimation('animation_xingxing')
+      this.ani.position.set(this.shapeArr[4].x, this.shapeArr[4].y + 140)
+      this.ani.state.setAnimation(0, 'animation', false)
+      this._stage.addChild(this.ani)
+    })
+
+    // 数字
+    this.numArr.map((v, i) => {
       v.on('pointertap', () => {
         getSound('audio_click').play()
         v.interactive = false
-        v.texture = i === this.shapeArr.length - 1 ? res['image_shape2'].texture : res['image_shape1'].texture
-
-        this.num++
-        if (this.num === this.shapeArr.length) this.bgColor.interactive = true
+        this.shapeArr[i].visible = true
+        this.num2++
+        if (this.num2 === 4) this.shapeArr[4].visible = true
       })
     })
   }

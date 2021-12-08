@@ -1,5 +1,5 @@
 import { getAnimation, getSound, createSprite } from '../../../loader'
-import HitAreaShapes from 'hitarea-shapes'
+import HitAreaShapes from 'hitarea-shapes'                                                                                                               
 import { TweenLite, TweenMax } from 'gsap'
 import Common from './index'
 
@@ -18,7 +18,7 @@ export default class Start extends Common {
     this.ban = createSprite('image_ban')
     this.banY = createSprite('image_banY')
 
-    // 数字
+    // 数字  
     this.numArr = [createSprite('image_num1'), createSprite('image_num2'), createSprite('image_num3'), createSprite('image_num4'), createSprite('image_num5')]
 
     this.wh = createSprite('image_wh')
@@ -56,13 +56,14 @@ export default class Start extends Common {
     this.banY.visible = false
     this.banY.anchor.set(0.5)
     this._stage.addChild(this.banY)
-    this.banY.position.set(729, 944)
+    this.banY.position.set(960, 915)
 
     // 板
     this.ban.visible = false
     this.ban.anchor.set(0.5)
     this._stage.addChild(this.ban)
-    this.ban.position.set(729, 515)
+    //          729  515
+    this.ban.position.set(960, 486)
 
     // 算式
     this.mark.visible = false
@@ -120,6 +121,15 @@ export default class Start extends Common {
           this._stage.removeChild(this.ani2)
           this.aniArr.map(v => this._stage.removeChild(v))
           this.init()
+
+          this._stage.removeChild(this.ani)
+
+          this.wh.visible = true
+          this.ban.visible = true
+          this.banY.visible = true
+          this.mark.visible = true
+          this.btnArr[0].visible = true
+          this.numArr.map(v => v.visible = true)
         }
       })
     })
@@ -166,7 +176,7 @@ export default class Start extends Common {
 
     // 问号
     this.wh.on('pointertap', () => {
-      getSound('audio_click').play()
+      getSound('audio_true').play()
       this.wh.visible = false
       this.ani2 = getAnimation('animation_kejian6')
       this._stage.addChild(this.ani2)

@@ -1,0 +1,83 @@
+
+2.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+a4
+  rotate: true
+  xy: 2, 2
+  size: 246, 178
+  orig: 246, 178
+  offset: 0, 0
+  index: -1
+c4
+  rotate: false
+  xy: 2, 474
+  size: 260, 189
+  orig: 260, 189
+  offset: 0, 0
+  index: -1
+d1
+  rotate: false
+  xy: 389, 796
+  size: 217, 222
+  orig: 217, 222
+  offset: 0, 0
+  index: -1
+d2
+  rotate: false
+  xy: 2, 250
+  size: 217, 222
+  orig: 217, 222
+  offset: 0, 0
+  index: -1
+d3
+  rotate: false
+  xy: 608, 796
+  size: 217, 222
+  orig: 217, 222
+  offset: 0, 0
+  index: -1
+e1
+  rotate: true
+  xy: 827, 817
+  size: 201, 158
+  orig: 201, 158
+  offset: 0, 0
+  index: -1
+e2
+  rotate: false
+  xy: 593, 636
+  size: 201, 158
+  orig: 201, 158
+  offset: 0, 0
+  index: -1
+e3
+  rotate: false
+  xy: 389, 637
+  size: 202, 157
+  orig: 202, 157
+  offset: 0, 0
+  index: -1
+g1
+  rotate: false
+  xy: 2, 665
+  size: 385, 353
+  orig: 385, 353
+  offset: 0, 0
+  index: -1
+x1
+  rotate: false
+  xy: 264, 469
+  size: 88, 96
+  orig: 88, 96
+  offset: 0, 0
+  index: -1
+x2
+  rotate: false
+  xy: 264, 567
+  size: 88, 96
+  orig: 88, 96
+  offset: 0, 0
+  index: -1

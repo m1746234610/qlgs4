@@ -109,6 +109,14 @@ export default class Start extends Common {
           this._stage.removeChild(this.ani)
           this.aniArr.map(v => this._stage.removeChild(v))
           this.init()
+
+          this._stage.removeChild(this.ani)
+
+          this.ban.visible = true
+          this.banY.visible = true
+          this.mark.visible = true
+          this.btnArr[0].visible = true
+          this.numArr.map(v => v.visible = true)
         }
       })
     })
@@ -135,7 +143,7 @@ export default class Start extends Common {
     // 数字
     this.numArr.map((v, i) => {
       v.on('pointertap', () => {
-        getSound('audio_click').play()
+        getSound(`audio_${i === 6 ? 'true' : 'click'}`).play()
         v.interactive = false
         switch (i) {
           case 0: this.aniFun(0, 2); break

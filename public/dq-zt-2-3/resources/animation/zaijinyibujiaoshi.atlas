@@ -6,105 +6,112 @@ filter: Linear,Linear
 repeat: none
 a1
   rotate: false
-  xy: 2, 166
+  xy: 2, 106
   size: 197, 197
   orig: 197, 197
   offset: 0, 0
   index: -1
 a2
   rotate: false
-  xy: 326, 429
+  xy: 326, 369
   size: 197, 197
   orig: 197, 197
   offset: 0, 0
   index: -1
 b1
-  rotate: true
-  xy: 201, 166
+  rotate: false
+  xy: 821, 772
   size: 197, 189
   orig: 197, 189
   offset: 0, 0
   index: -1
 b2
   rotate: true
-  xy: 392, 231
+  xy: 201, 107
   size: 196, 189
   orig: 196, 189
   offset: 0, 0
   index: -1
 b3
   rotate: false
-  xy: 839, 802
+  xy: 525, 445
   size: 119, 115
   orig: 119, 115
   offset: 0, 0
   index: -1
 b4
   rotate: false
-  xy: 2, 2
+  xy: 646, 445
   size: 119, 115
   orig: 119, 115
   offset: 0, 0
   index: -1
 b5
   rotate: false
-  xy: 123, 3
-  size: 119, 114
-  orig: 119, 114
+  xy: 767, 445
+  size: 119, 115
+  orig: 119, 115
+  offset: 0, 0
+  index: -1
+c0
+  rotate: false
+  xy: 821, 743
+  size: 45, 27
+  orig: 45, 27
   offset: 0, 0
   index: -1
 c1
   rotate: false
-  xy: 569, 770
-  size: 268, 251
-  orig: 268, 251
-  offset: 0, 0
+  xy: 569, 723
+  size: 250, 238
+  orig: 252, 239
+  offset: 1, 1
   index: -1
 c2
-  rotate: true
-  xy: 960, 813
+  rotate: false
+  xy: 326, 305
   size: 104, 62
   orig: 104, 62
   offset: 0, 0
   index: -1
 c3
-  rotate: true
-  xy: 960, 707
+  rotate: false
+  xy: 525, 381
   size: 104, 62
   orig: 104, 62
   offset: 0, 0
   index: -1
 jia
   rotate: false
-  xy: 2, 119
+  xy: 569, 562
   size: 412, 45
   orig: 420, 131
   offset: 4, 51
   index: -1
 ss1
   rotate: false
-  xy: 2, 365
+  xy: 2, 305
   size: 322, 261
   orig: 322, 261
   offset: 0, 0
   index: -1
 ss2
   rotate: true
-  xy: 569, 656
+  xy: 569, 609
   size: 112, 261
   orig: 112, 261
   offset: 0, 0
   index: -1
 ss3
   rotate: true
-  xy: 839, 919
-  size: 102, 183
-  orig: 102, 183
+  xy: 2, 2
+  size: 102, 182
+  orig: 102, 182
   offset: 0, 0
   index: -1
 ying
   rotate: false
-  xy: 2, 628
+  xy: 2, 568
   size: 565, 393
   orig: 565, 393
   offset: 0, 0

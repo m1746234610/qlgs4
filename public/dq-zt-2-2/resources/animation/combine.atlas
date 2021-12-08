@@ -21,85 +21,99 @@ filter: Linear,Linear
 repeat: none
 c1
   rotate: false
-  xy: 2, 2
-  size: 144, 156
-  orig: 144, 156
+  xy: 618, 516
+  size: 127, 139
+  orig: 127, 139
   offset: 0, 0
   index: -1
 c2
   rotate: false
-  xy: 436, 227
-  size: 143, 156
-  orig: 143, 156
+  xy: 747, 516
+  size: 127, 139
+  orig: 127, 139
   offset: 0, 0
   index: -1
 c3
-  rotate: false
-  xy: 581, 227
-  size: 143, 156
-  orig: 143, 156
+  rotate: true
+  xy: 618, 387
+  size: 127, 139
+  orig: 127, 139
   offset: 0, 0
   index: -1
 c4
   rotate: false
-  xy: 2, 160
-  size: 233, 253
-  orig: 233, 253
+  xy: 410, 431
+  size: 206, 224
+  orig: 206, 224
   offset: 0, 0
   index: -1
 c5
   rotate: false
-  xy: 477, 430
-  size: 232, 253
-  orig: 232, 253
+  xy: 2, 203
+  size: 206, 225
+  orig: 206, 225
+  offset: 0, 0
+  index: -1
+d0
+  rotate: true
+  xy: 180, 163
+  size: 38, 23
+  orig: 38, 23
   offset: 0, 0
   index: -1
 d1
   rotate: false
-  xy: 2, 415
-  size: 473, 268
-  orig: 473, 268
+  xy: 2, 430
+  size: 406, 225
+  orig: 406, 225
   offset: 0, 0
   index: -1
 d2
-  rotate: true
-  xy: 910, 584
-  size: 99, 59
-  orig: 99, 59
+  rotate: false
+  xy: 932, 890
+  size: 89, 53
+  orig: 89, 53
   offset: 0, 0
   index: -1
 d3
-  rotate: true
-  xy: 148, 59
-  size: 99, 59
-  orig: 99, 59
-  offset: 0, 0
+  rotate: false
+  xy: 759, 461
+  size: 88, 53
+  orig: 89, 53
+  offset: 1, 0
   index: -1
 e1
   rotate: false
-  xy: 237, 216
-  size: 197, 197
-  orig: 197, 197
-  offset: 0, 0
+  xy: 2, 27
+  size: 176, 174
+  orig: 176, 176
+  offset: 0, 1
   index: -1
 e2
   rotate: false
-  xy: 711, 486
-  size: 197, 197
-  orig: 197, 197
-  offset: 0, 0
+  xy: 210, 254
+  size: 176, 174
+  orig: 176, 176
+  offset: 0, 1
+  index: -1
+images/chacao
+  rotate: false
+  xy: 2, 2
+  size: 123, 23
+  orig: 125, 25
+  offset: 1, 1
   index: -1
 jia
-  rotate: false
-  xy: 477, 385
-  size: 418, 43
-  orig: 425, 125
-  offset: 4, 48
+  rotate: true
+  xy: 892, 575
+  size: 368, 38
+  orig: 376, 111
+  offset: 4, 43
   index: -1
 ssa
   rotate: false
-  xy: 2, 685
-  size: 1003, 324
-  orig: 1003, 324
+  xy: 2, 657
+  size: 888, 286
+  orig: 888, 286
   offset: 0, 0
   index: -1

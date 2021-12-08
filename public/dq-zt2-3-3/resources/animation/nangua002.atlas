@@ -1,0 +1,13 @@
+
+nangua002.png
+size: 72,70
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+nangua
+  rotate: false
+  xy: 2, 12
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1

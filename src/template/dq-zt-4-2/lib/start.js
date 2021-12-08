@@ -74,6 +74,9 @@ export default class Start extends Common {
       for (let i = 0; i < this.aniArr.length - 1; i++) this._stage.removeChild(this.aniArr[i])
       this._stage.removeChild(this.ani)
       this.init()
+      this._stage.removeChild(this.ani)
+      this.markArr.map(v => v.visible = true)
+      this.numArr.map(v => { v.visible = true; v.alpha = 1 })
     })
 
     this.ani.on('pointertap', () => {
