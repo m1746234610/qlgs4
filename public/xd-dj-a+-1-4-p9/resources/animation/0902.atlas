@@ -1,0 +1,34 @@
+
+0902.png
+size: 680,678
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00-11
+  rotate: false
+  xy: 2, 324
+  size: 676, 352
+  orig: 676, 352
+  offset: 0, 0
+  index: -1
+00-12
+  rotate: false
+  xy: 534, 164
+  size: 70, 158
+  orig: 70, 158
+  offset: 0, 0
+  index: -1
+00-13
+  rotate: false
+  xy: 386, 140
+  size: 146, 182
+  orig: 146, 182
+  offset: 0, 0
+  index: -1
+ggg
+  rotate: false
+  xy: 2, 20
+  size: 382, 302
+  orig: 382, 302
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,183 @@
+{
+"skeleton": { "hash": "yqnlrlJKYh/GxBxcVjBLnsHbLjA", "spine": "3.7.94", "width": 1038.19, "height": 419.61, "images": "./images/", "audio": "" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "zero", "parent": "root", "length": 138.09, "rotation": -0.57, "x": 8.5, "y": -406.29 },
+	{ "name": "zero2", "parent": "zero", "length": 72.53, "rotation": -1.03, "x": -41.19, "y": 103.99 },
+	{ "name": "zero3", "parent": "zero2", "length": 74.86, "rotation": -6.97, "x": 158.72, "y": 37.41 },
+	{ "name": "zero4", "parent": "zero3", "length": 38.99, "rotation": 85.8, "x": 71.9, "y": 2.63 },
+	{ "name": "zero5", "parent": "zero3", "length": 60.99, "rotation": -67.97, "x": 71.27, "y": -0.03 },
+	{ "name": "zero6", "parent": "zero3", "length": 290.78, "rotation": 8.57, "x": 99.04, "y": -1.33 },
+	{
+		"name": "guang",
+		"parent": "zero",
+		"rotation": 0.38,
+		"x": 653.86,
+		"y": -96.69,
+		"scaleX": 0.474,
+		"scaleY": 0.549
+	}
+],
+"slots": [
+	{ "name": "00-07", "bone": "zero2", "attachment": "00-07" },
+	{ "name": "00-08", "bone": "zero3", "attachment": "00-08" },
+	{ "name": "00-09", "bone": "zero4", "attachment": "00-09" },
+	{ "name": "00-10", "bone": "zero5", "attachment": "00-10" },
+	{ "name": "00-6", "bone": "zero6", "attachment": "00-06" },
+	{ "name": "00-06", "bone": "zero6" },
+	{ "name": "ggg", "bone": "guang", "attachment": "ggg" }
+],
+"skins": {
+	"default": {
+		"00-07": {
+			"00-07": { "x": 103.98, "y": -16.78, "rotation": 1.6, "width": 152, "height": 114 }
+		},
+		"00-08": {
+			"00-08": { "x": 35.54, "y": 1.24, "rotation": 8.57, "width": 93, "height": 38 }
+		},
+		"00-09": {
+			"00-09": { "x": 39.94, "y": -9.68, "rotation": -77.23, "width": 44, "height": 79 }
+		},
+		"00-10": {
+			"00-10": { "x": 42.23, "y": 7.57, "rotation": 76.54, "width": 41, "height": 80 }
+		},
+		"00-6": {
+			"00-06": { "x": 395.72, "y": 3.24, "width": 825, "height": 351 }
+		},
+		"ggg": {
+			"ggg": {
+				"type": "mesh",
+				"color": "fcf64dff",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 166.56, -29.4, -185.43, -14.49, -187.88, 178.89, 194.12, 178.89 ],
+				"hull": 4,
+				"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+				"width": 382,
+				"height": 302
+			}
+		}
+	}
+},
+"animations": {
+	"idle": {
+		"slots": {
+			"ggg": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"zero6": {
+				"scale": [
+					{ "time": 0, "x": 0, "y": 1 }
+				]
+			},
+			"zero5": {
+				"rotate": [
+					{ "time": 0, "angle": 55.84 }
+				]
+			},
+			"zero2": {
+				"translate": [
+					{ "time": 0, "x": -190.27, "y": -1.89 }
+				]
+			},
+			"zero4": {
+				"rotate": [
+					{ "time": 0, "angle": -72.71 }
+				]
+			},
+			"zero3": {
+				"rotate": [
+					{ "time": 0, "angle": -66.87 }
+				]
+			}
+		}
+	},
+	"idle2": {
+		"slots": {
+			"ggg": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		}
+	},
+	"in": {
+		"slots": {
+			"ggg": {
+				"color": [
+					{
+						"time": 0,
+						"color": "ffffff00",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.1,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3,
+						"color": "ffffff93",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.4667,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6333,
+						"color": "ffffff93",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.8333, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"zero2": {
+				"translate": [
+					{ "time": 0, "x": -190.27, "y": -1.89, "curve": "stepped" },
+					{ "time": 0.9333, "x": -190.27, "y": -1.89 },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"zero6": {
+				"scale": [
+					{ "time": 0, "x": 0, "y": 1, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 1 },
+					{ "time": 2, "x": 1, "y": 1 }
+				]
+			},
+			"zero4": {
+				"rotate": [
+					{ "time": 0, "angle": -72.71, "curve": "stepped" },
+					{ "time": 1.1667, "angle": -72.71 },
+					{ "time": 1.5, "angle": 0 }
+				]
+			},
+			"zero5": {
+				"rotate": [
+					{ "time": 0, "angle": 55.84, "curve": "stepped" },
+					{ "time": 1.1667, "angle": 55.84 },
+					{ "time": 1.5, "angle": 0 }
+				]
+			},
+			"zero3": {
+				"rotate": [
+					{ "time": 0, "angle": -66.87, "curve": "stepped" },
+					{ "time": 1, "angle": -66.87 },
+					{ "time": 1.3333, "angle": 0 }
+				]
+			}
+		}
+	}
+}
+}

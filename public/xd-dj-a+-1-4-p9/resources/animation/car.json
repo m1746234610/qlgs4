@@ -1,0 +1,206 @@
+{
+"skeleton": { "hash": "/b+cIxhQsKEBuaBwD598uHZBF8g", "spine": "3.7.94", "width": 1077.7, "height": 652.76, "images": "./images/", "audio": "" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "length": 267.5, "rotation": 1.21, "x": 839.53, "y": -789.98 },
+	{ "name": "bone2", "parent": "bone", "length": 163.21, "rotation": 157.23, "x": -105.89, "y": 302.96 },
+	{ "name": "bone3", "parent": "bone", "length": 173.9, "rotation": -17.43, "x": 117.47, "y": 239.01 },
+	{
+		"name": "bone4",
+		"parent": "bone",
+		"length": 74.12,
+		"rotation": 116.46,
+		"x": -97.21,
+		"y": 197.88,
+		"scaleX": 1.016
+	},
+	{ "name": "bone5", "parent": "bone", "length": 74.12, "rotation": 116.46, "x": -198.17, "y": 219.08 }
+],
+"slots": [
+	{ "name": "ggg2", "bone": "bone5", "attachment": "ggg" },
+	{ "name": "car-04", "bone": "bone2", "attachment": "car-04" },
+	{ "name": "car-01", "bone": "bone", "attachment": "car-01" },
+	{ "name": "car-03", "bone": "bone", "attachment": "car-03" },
+	{ "name": "car-05", "bone": "bone3", "attachment": "car-05" },
+	{ "name": "ggg", "bone": "bone4", "attachment": "ggg" }
+],
+"skins": {
+	"default": {
+		"car-01": {
+			"car-01": { "x": 5.49, "y": 189.76, "rotation": -1.21, "width": 841, "height": 610 },
+			"carrr": { "x": -20.04, "y": 174.31, "rotation": -1.21, "width": 796, "height": 665 }
+		},
+		"car-03": {
+			"car-03": { "x": -310.97, "y": -84.86, "rotation": -1.21, "width": 226, "height": 133 }
+		},
+		"car-04": {
+			"car-04": { "x": 11.39, "y": -0.82, "rotation": -158.45, "width": 325, "height": 132 }
+		},
+		"car-05": {
+			"car-05": { "x": 107.9, "y": 1.96, "rotation": 16.22, "width": 341, "height": 105 }
+		},
+		"ggg": {
+			"ggg": {
+				"type": "mesh",
+				"color": "fcff80ff",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0, 0.44428, 0.29816, 0.74437, 0.70751 ],
+				"triangles": [ 4, 2, 3, 5, 4, 3, 1, 2, 4, 1, 4, 5, 5, 3, 0, 1, 5, 0 ],
+				"vertices": [ -24.63, 45.7, -3.43, -213.91, 345, 302.71, 43.22, 238.06, 106.57, 165.21, 3.67, 90.1 ],
+				"hull": 4,
+				"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+				"width": 382,
+				"height": 302
+			}
+		},
+		"ggg2": {
+			"ggg": {
+				"type": "mesh",
+				"color": "fcff80ff",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0, 0.44428, 0.29816, 0.74437, 0.70751 ],
+				"triangles": [ 4, 2, 3, 5, 4, 3, 1, 2, 4, 1, 4, 5, 5, 3, 0, 1, 5, 0 ],
+				"vertices": [ -25.68, 44.27, -11.25, -228.24, 356.21, 324.67, 48.37, 248.45, 110.64, 173.54, 4.23, 91.74 ],
+				"hull": 4,
+				"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+				"width": 382,
+				"height": 302
+			}
+		}
+	}
+},
+"animations": {
+	"idle": {
+		"slots": {
+			"ggg": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"ggg2": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		}
+	},
+	"right": {
+		"slots": {
+			"car-01": {
+				"attachment": [
+					{ "time": 0, "name": "carrr" }
+				]
+			},
+			"car-03": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.3333, "color": "ffffff00" }
+				]
+			},
+			"ggg": {
+				"color": [
+					{
+						"time": 0,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"color": "ffffff00",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1,
+						"color": "ffffff00",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.3333, "color": "ffffffff" }
+				]
+			},
+			"ggg2": {
+				"color": [
+					{
+						"time": 0,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"color": "ffffff00",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1,
+						"color": "ffffff00",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.3333, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"bone3": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -3.69,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": -6.97,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": -3.69,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1,
+						"angle": -6.97,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.3333, "angle": -3.69 }
+				],
+				"translate": [
+					{ "time": 0, "x": -0.27, "y": -12.74 }
+				]
+			},
+			"bone2": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": 4.65,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1,
+						"angle": 4.65,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.3333, "angle": 0 }
+				]
+			}
+		}
+	}
+}
+}
