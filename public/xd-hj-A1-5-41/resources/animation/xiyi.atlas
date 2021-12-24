@@ -1,0 +1,20 @@
+
+xiyi.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xx-01
+  rotate: false
+  xy: 2, 355
+  size: 835, 578
+  orig: 835, 578
+  offset: 0, 0
+  index: -1
+xx-02
+  rotate: true
+  xy: 2, 2
+  size: 351, 584
+  orig: 351, 584
+  offset: 0, 0
+  index: -1

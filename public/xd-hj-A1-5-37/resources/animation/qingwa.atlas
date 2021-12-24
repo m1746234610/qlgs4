@@ -1,0 +1,20 @@
+
+qingwa.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xx-01
+  rotate: false
+  xy: 2, 307
+  size: 835, 578
+  orig: 835, 578
+  offset: 0, 0
+  index: -1
+xx-02
+  rotate: false
+  xy: 2, 2
+  size: 230, 303
+  orig: 251, 305
+  offset: 21, 0
+  index: -1
