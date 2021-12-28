@@ -28,6 +28,15 @@ export default class Start extends Common {
     // 恐龙
     this.loong = createSprite('image_loong')
 
+    // 问号
+    this.wh = createSprite('image_wh')
+
+    // 提示
+    this.hint = createSprite('image_hint')
+
+    // 阴影
+    this.yy = createSprite('image_yy')
+
 
     this.eventHandle()
   }
@@ -69,11 +78,25 @@ export default class Start extends Common {
     // 龙
     this.ani.state.setAnimation(0, 'idle', true)
     this.ani.visible = true
-    // this.ani.anchor.set(0.5)
     this._stage.addChild(this.ani)
-    // this.ani.position.set(136, 900)
 
+    // 问号
+    this.wh.anchor.set(0.5)
+    this.wh.cursor = 'pointer'
+    this.wh.interactive = true
+    this._stage.addChild(this.wh)
+    this.wh.position.set(1806, 174)
 
+    // 阴影
+    this.yy.visible = false
+    this.yy.interactive = true
+    this._stage.addChild(this.yy)
+
+    // 提示
+    this.hint.visible = false
+    this.hint.anchor.set(0.5)
+    this._stage.addChild(this.hint)
+    this.hint.position.set(990, 540)
   }
 
   eventHandle() {
@@ -106,6 +129,24 @@ export default class Start extends Common {
         .on('pointerup', this.onEnd.bind(this))
         .on('pointerupoutside', this.onEnd.bind(this))
     }
+
+    // 问号
+    this.wh.on('pointerdown', () => {
+      getSound('audio_cong').play()
+      this.wh.scale.set(0.9)
+    }).on('pointerup', () => {
+      this.wh.scale.set(1)
+      this.yy.visible = true
+      this.hint.visible = true
+      this._stage.addChild(this.yy)
+      this._stage.addChild(this.hint)
+    })
+
+    // 阴影
+    this.yy.on('pointertap', () => {
+      this.yy.visible = false
+      this.hint.visible = false
+    })
   }
 
   onDown(e) {
@@ -239,7 +280,7 @@ export default class Start extends Common {
           this.loong.visible = true
           // this.ani.state.setAnimation(0, 'talk', true)
           // this._stage.addChild(this.ani)
-      
+
           this.ani.state.setAnimation(0, 'idle', true)
         }, 2000);
       }
