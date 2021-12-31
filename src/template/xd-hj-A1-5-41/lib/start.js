@@ -114,7 +114,7 @@ export default class Start extends Common {
         if (i === 1) {
           v.scale.set(1)
           clearTimeout(this.time)
-          getSound('audio_a+1-5-37').stop()
+          getSound('audio_37').stop()
           this._stage.removeChild(this.ani)
           this._stage.removeChild(this.ani2)
           this.init()
@@ -199,7 +199,6 @@ export default class Start extends Common {
           onComplete: () => {
             this.rotate(current)
             this.ipInteractive(true)
-            // console.log(current.num);
           }
         })
       } else { // 旋转
@@ -211,7 +210,6 @@ export default class Start extends Common {
           onComplete: () => {
             this.ipInteractive(true)
             current.num = current.num === 7 ? 0 : current.num + 1
-            // console.log(current.circleX, current.num);
           }
         })
       }
@@ -266,7 +264,7 @@ export default class Start extends Common {
       if (this.leftEar && this.rightEar && this.head && this.body && this.leftLeg && this.rightLegEnd && this.tail) {
         this.ipInteractive(false)
 
-        getSound('audio_a+1-5-37').play()
+        getSound('audio_37').play()
 
         this.loong.visible = false
         this.ani.state.setAnimation(0, 'talk', true)

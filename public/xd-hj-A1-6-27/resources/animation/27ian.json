@@ -1,0 +1,133 @@
+{
+"skeleton": { "hash": "+hH2MdKXgi6hw1ucZ44nC4LF+DY", "spine": "3.7.94", "width": 1920, "height": 1080, "images": "./images/", "audio": "E:/学学而思/A+/09-教师页-乐探索2" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone12", "parent": "root", "x": 805.37, "y": -583.84 },
+	{
+		"name": "bone13",
+		"parent": "bone12",
+		"rotation": -1.45,
+		"x": -26.89,
+		"y": 3.86,
+		"scaleX": 5.173,
+		"scaleY": 2.349
+	}
+],
+"slots": [
+	{ "name": "huo0001", "bone": "bone13" },
+	{ "name": "a", "bone": "bone12", "attachment": "jian" }
+],
+"skins": {
+	"default": {
+		"a": {
+			"jian": {
+				"type": "mesh",
+				"uvs": [ 0.93643, 0.99999, 0.05498, 0.99999, 0.05584, 1.0E-5, 0.93559, 0 ],
+				"triangles": [ 2, 3, 0, 1, 2, 0 ],
+				"vertices": [ 565.68, -141.03, -641.03, -141.02, -639.85, -70.03, 564.51, -70.03 ],
+				"hull": 4,
+				"edges": [ 0, 2, 2, 4, 4, 6, 0, 6 ],
+				"width": 1369,
+				"height": 71
+			}
+		},
+		"huo0001": {
+			"huo0001": { "y": 0.5, "width": 230, "height": 85 },
+			"huo0002": { "y": 0.5, "width": 230, "height": 85 },
+			"huo0003": { "y": 0.5, "width": 230, "height": 85 },
+			"huo0004": { "y": 0.5, "width": 230, "height": 85 }
+		}
+	}
+},
+"animations": {
+	"idle": {
+		"slots": {
+			"huo0001": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"bone13": {
+				"translate": [
+					{ "time": 0, "x": -44.8, "y": -97.71 }
+				]
+			}
+		}
+	},
+	"in": {
+		"slots": {
+			"a": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0667, "name": "jian" }
+				]
+			},
+			"huo0001": {
+				"color": [
+					{ "time": 1.0667, "color": "ffffffff" },
+					{ "time": 1.4, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.0667, "name": "huo0001" },
+					{ "time": 0.1667, "name": "huo0002" },
+					{ "time": 0.2333, "name": "huo0003" },
+					{ "time": 0.3333, "name": "huo0004" },
+					{ "time": 0.4, "name": "huo0001" },
+					{ "time": 0.5, "name": "huo0002" },
+					{ "time": 0.5667, "name": "huo0003" },
+					{ "time": 0.6667, "name": "huo0004" },
+					{ "time": 0.7333, "name": "huo0001" },
+					{ "time": 0.8333, "name": "huo0002" },
+					{ "time": 0.9, "name": "huo0003" },
+					{ "time": 1, "name": "huo0004" },
+					{ "time": 1.0667, "name": "huo0001" },
+					{ "time": 1.1667, "name": "huo0002" },
+					{ "time": 1.2333, "name": "huo0003" },
+					{ "time": 1.3333, "name": "huo0004" },
+					{ "time": 1.4, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"bone12": {
+				"rotate": [
+					{ "time": 0, "angle": -9.98, "curve": "stepped" },
+					{
+						"time": 0.0667,
+						"angle": -9.98,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.7333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -620.6, "y": 76.94, "curve": "stepped" },
+					{
+						"time": 0.0667,
+						"x": -1013.4,
+						"y": 76.94,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.7333, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.096, "y": 0.212, "curve": "stepped" },
+					{
+						"time": 0.0667,
+						"x": 0.096,
+						"y": 0.212,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.7333, "x": 1, "y": 1 }
+				]
+			},
+			"bone13": {
+				"translate": [
+					{ "time": 0, "x": -44.8, "y": -97.71 }
+				]
+			}
+		}
+	}
+}
+}

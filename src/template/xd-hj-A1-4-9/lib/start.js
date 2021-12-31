@@ -2,6 +2,7 @@ import { getAnimation, getSound, createSprite } from '../../../loader'
 import HitAreaShapes from 'hitarea-shapes'
 import { TweenLite, TweenMax } from 'gsap'
 import Common from './index'
+import Start2 from './start2'
 
 export default class Start extends Common {
   constructor() {
@@ -22,7 +23,7 @@ export default class Start extends Common {
     this.tensBigArr2 = [false, false, true, true, false, false]
     this.onesBigArr2 = [false, false, false, false, true, true]
 
-    this.btnArrZb = [1063.5, 1268.5, 1429]
+    this.btnArrZb = [1063.5, 1268.5, 1429, 1589.5]
     this.eqArrZb = [{ x: 515, y: 281.5 }, { x: 1157, y: 274.5 }, { x: 902, y: 826.5 }]
     this.frameArrZb = [{ x: 604.5, y: 281.5 }, { x: 1076.5, y: 401.5 }, { x: 908, y: 724 }]
     this.markArrZb = [
@@ -34,6 +35,9 @@ export default class Start extends Common {
 
     this.markBigArrZb2 = [{ x: 1102, y: 724 }, { x: 1102, y: 776.5 }, { x: 1185, y: 724 }, { x: 1185, y: 776.5 }, { x: 1267.5, y: 724 }, { x: 1267.5, y: 776.5 }]
 
+    this.unitArrZb1 = [1132, 1237]
+    this.unitArrZb2 = [1102, 1185, 1267.5]
+
 
     // 问号
     this.wh = createSprite('image_wh')
@@ -44,7 +48,7 @@ export default class Start extends Common {
     this.car = createSprite('image_car')
 
     // 按钮
-    this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2'), createSprite('image_btn3')]
+    this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2'), createSprite('image_btn4'), createSprite('image_btn5')]
 
     // 阴影
     this.yy = createSprite('image_yy')
@@ -52,11 +56,30 @@ export default class Start extends Common {
     // 式子
     this.eqArr = [createSprite('image_equation1'), createSprite('image_equation2'), createSprite('image_equation3')]
 
+    // 单位
+    this.unit1Arr = [createSprite('image_shi'), createSprite('image_ge')]
+    this.unit2Arr = [createSprite('image_shi'), createSprite('image_ge')]
+    this.unit3Arr = [createSprite('image_bai'), createSprite('image_shi'), createSprite('image_ge')]
+
+    // 大单位
+    // this.unitBig1Arr = [createSprite('image_shi'), createSprite('image_ge')]
+    // this.unitBig2Arr = [createSprite('image_shi'), createSprite('image_ge')]
+    this.unitBigArr = [createSprite('image_bai'), createSprite('image_shi'), createSprite('image_ge')]
+
+    // 大单位框
+    this.unitArr = [createSprite('image_unit'), createSprite('image_unit'), createSprite('image_unit')]
+
     // 数字框
     this.frameArr = [createSprite('image_frame'), createSprite('image_frame'), createSprite('image_frame')]
 
+    // 大数字框
+    this.frameBig = createSprite('image_frame')
+
     // 数字
     this.num = [createSprite('image_num1'), createSprite('image_num2'), createSprite('image_num3')]
+
+    // 大数字
+    this.numBig = [createSprite('image_num1'), createSprite('image_num2'), createSprite('image_num3')]
 
     // 加减号
     this.markArr = [createSprite('image_mark1'), createSprite('image_mark2'), createSprite('image_mark1'), createSprite('image_mark2'), createSprite('image_mark1'), createSprite('image_mark2'), createSprite('image_mark1'), createSprite('image_mark2'), createSprite('image_mark1'), createSprite('image_mark2'), createSprite('image_mark1'), createSprite('image_mark2'), createSprite('image_mark1'), createSprite('image_mark2')]
@@ -91,6 +114,7 @@ export default class Start extends Common {
       this.goodsBigArr[2].push(createSprite('image_goodsBig'))
     }
 
+    this._container = new PIXI.Container
 
     this.Num = 0
     this.eventHandle()
@@ -105,34 +129,35 @@ export default class Start extends Common {
     this.num5 = 0
     this.num6 = 0
     this.num7 = 0
+    this.numB = 0
     this.aniArr = [getAnimation('animation_0901'), getAnimation('animation_0902'), getAnimation('animation_0903')]
-
-    this._stage.addChild(createSprite('image_bg'))
+    this._stage.addChild(this._container)
+    this._container.addChild(createSprite('image_bg'))
 
     // 问号
     this.wh.visible = true
     this.wh.anchor.set(0.5)
     this.wh.cursor = 'pointer'
     this.wh.interactive = true
-    this._stage.addChild(this.wh)
+    this._container.addChild(this.wh)
     this.wh.position.set(1806, 174)
 
     // 提示
     this.hint.visible = false
     // this.hint.cursor = 'pointer'
     this.hint.interactive = true
-    this._stage.addChild(this.hint)
+    this._container.addChild(this.hint)
 
     // 车
     this.car.visible = true
     this.car.anchor.set(0.5)
     this.car.texture = res['image_car'].texture
-    this._stage.addChild(this.car)
+    this._container.addChild(this.car)
     this.car.position.set(840, 633)
 
     this.aniArr.map(v => {
       v.visible = false
-      this._stage.addChild(v)
+      this._container.addChild(v)
     })
 
     // 按钮
@@ -140,41 +165,86 @@ export default class Start extends Common {
       v.anchor.set(0.5)
       v.cursor = 'pointer'
       v.interactive = true
-      this._stage.addChild(v)
+      this._container.addChild(v)
       v.position.set(this.btnArrZb[i], 973)
     })
-    this.btnArr[1].num = 0
+    this.btnArr[2].num = 0
 
     // 式子
     this.eqArr.map((v, i) => {
       v.anchor.set(0.5)
       v.visible = false
       v.interactive = true
-      this._stage.addChild(v)
+      this._container.addChild(v)
       v.position.set(this.eqArrZb[i].x, this.eqArrZb[i].y)
     })
 
-    // 数字数字框
+    // 单位1
+    this.unit1Arr.map((v, i) => {
+      v.scale.set(0.54)
+      v.anchor.set(0.5)
+      v.visible = false
+      this._container.addChild(v)
+      v.position.set(819.5 + i * 55.5, 338.5)
+    })
+
+    // 单位2
+    this.unit2Arr.map((v, i) => {
+      v.scale.set(0.54)
+      v.anchor.set(0.5)
+      v.visible = false
+      this._container.addChild(v)
+      v.position.set(1291.5 + i * 55.5, 458.5)
+    })
+
+    // 单位3
+    this.unit3Arr.map((v, i) => {
+      v.scale.set(0.54)
+      v.anchor.set(0.5)
+      v.visible = false
+      this._container.addChild(v)
+      v.position.set(1088 + i * 44, 781.5)
+    })
+
+    // 数字框
     this.frameArr.map((v, i) => {
       v.anchor.set(0.5)
       v.visible = false
-      v.cursor = 'pointer'
-      v.interactive = true
+      // v.cursor = 'pointer'
+      // v.interactive = true
       v.texture = res['image_frame'].texture
-      this._stage.addChild(v)
+      this._container.addChild(v)
       v.position.set(this.frameArrZb[i].x, this.frameArrZb[i].y)
     })
+
+    // 大数字框
+    this.frameBig.scale.set(1.73)
+    this.frameBig.anchor.set(0.5)
+    this.frameBig.visible = false
+    this.frameBig.cursor = 'pointer'
+    this.frameBig.interactive = true
+    this._container.addChild(this.frameBig)
+    this.frameBig.position.set(760, 540)
 
     // 数字
     this.num.map((v, i) => {
       v.anchor.set(0.5)
       v.visible = false
-      this._stage.addChild(v)
+      this._container.addChild(v)
       v.position.set(this.frameArrZb[i].x, this.frameArrZb[i].y)
     })
-    this._stage.addChild(this.eqArr[0])
-    this._stage.addChild(this.frameArr[0])
-    this._stage.addChild(this.num[0])
+    this._container.addChild(this.eqArr[0])
+    this._container.addChild(this.frameArr[0])
+    this._container.addChild(this.num[0])
+
+    // 大数字
+    this.numBig.map((v, i) => {
+      v.scale.set(1.73)
+      v.anchor.set(0.5)
+      v.visible = false
+      this._container.addChild(v)
+      v.position.set(760, 540)
+    })
 
     // 加减号
     this.markArr.map((v, i) => {
@@ -193,7 +263,7 @@ export default class Start extends Common {
       v.visible = false
       v.cursor = 'pointer'
       v.interactive = v.num2 === 1 ? true : false
-      this._stage.addChild(v)
+      this._container.addChild(v)
       v.position.set(this.markArrZb[i].x, this.markArrZb[i].y)
     })
 
@@ -206,15 +276,33 @@ export default class Start extends Common {
     this.yy.visible = false
     // this.yy.cursor = 'pointer'
     this.yy.interactive = true
-    this._stage.addChild(this.yy)
+    this._container.addChild(this.yy)
 
     // 大式子
     this.eqBigArr.map((v, i) => {
       v.anchor.set(0.5)
       v.visible = false
       v.interactive = true
-      this._stage.addChild(v)
+      this._container.addChild(v)
       v.position.set(820, 540)
+    })
+
+    // 大单位
+    this.unitArr.map((v, i) => {
+      v.anchor.set(0.5)
+      v.visible = false
+      v.cursor = 'pointer'
+      v.interactive = true
+      this._container.addChild(v)
+      v.position.set(this.unitArrZb2[i], 648)
+    })
+
+    // 大单位数字
+    this.unitBigArr.map((v, i) => {
+      v.anchor.set(0.5)
+      v.visible = false
+      this._container.addChild(v)
+      v.position.set(this.unitArrZb2[i], 648)
     })
 
     // 大加减号
@@ -225,7 +313,7 @@ export default class Start extends Common {
       v.visible = false
       v.cursor = 'pointer'
       v.interactive = v.num2 === 1 ? true : false
-      this._stage.addChild(v)
+      this._container.addChild(v)
       v.position.set(this.markBigArrZb2[i].x, this.markBigArrZb2[i].y)
     })
 
@@ -243,7 +331,7 @@ export default class Start extends Common {
         v.ones = 0
         v.anchor.set(0.5)
         v.visible = false
-        this._stage.addChild(v)
+        this._container.addChild(v)
         v.position.y = 582.5 - j * 30
       })
     })
@@ -278,27 +366,39 @@ export default class Start extends Common {
           })
 
           this.aniCar = getAnimation('animation_car')
-          this._stage.addChild(this.aniCar)
+          this._container.addChild(this.aniCar)
           this.aniCar.state.setAnimation(0, 'right', false).listener = {
             complete: () => {
               this.time = setTimeout(() => {
-                this._stage.removeChild(this.aniCar)
+                this._container.removeChild(this.aniCar)
                 v.interactive = true
                 this.btnArr[1].interactive = true
                 this.car.visible = true
                 this.car.texture = res['image_car2'].texture
-                this.car.position.x = 840 + 24.5
-                this.car.position.y = 633 - 22
+                this.car.position.x = 840 - 23
+                // this.car.position.y = 633 - 22
               }, 0);
             }
           }
-
 
           for (let j = 0; j < this.markArr.length; j++) {
             this.markArr[j].visible = false
             console.log(j);
           }
+
+          this.unit1Arr.map(v => v.visible = false)
+          this.unit2Arr.map(v => v.visible = false)
+          this.unit3Arr.map(v => v.visible = false)
+
+          // 数字框消失
+          this.numFun()
         } else if (i === 1) {
+          this.aniArr.map(v => this._container.removeChild(v))
+          this._container.removeChild(this.aniCar)
+          getSound('audio_bo').stop()
+          this._container.visible = false
+          new Start2().init()
+        } else if (i === 2) {
           v.num++
           v.interactive = false
           switch (v.num) {
@@ -307,8 +407,8 @@ export default class Start extends Common {
             case 3: this.aniFun(2); v.interactive = false; break
           }
         } else {
-          this.aniArr.map(v => this._stage.removeChild(v))
-          this._stage.removeChild(this.aniCar)
+          this.aniArr.map(v => this._container.removeChild(v))
+          this._container.removeChild(this.aniCar)
           getSound('audio_bo').stop()
           this.init()
         }
@@ -322,7 +422,7 @@ export default class Start extends Common {
     }).on('pointerup', () => {
       this.wh.scale.set(1)
       this.hint.visible = true
-      this._stage.addChild(this.hint)
+      this._container.addChild(this.hint)
       this.intFun(false)
     })
 
@@ -334,12 +434,11 @@ export default class Start extends Common {
     })
 
     // 数字框
-    this.frameArr.map((v, i) => {
-      v.on('pointertap', () => {
-        getSound('audio_cong').play()
-        v.interactive = false
-        this.num[i].visible = true
-      })
+    this.frameBig.on('pointertap', () => {
+      getSound('audio_cong').play()
+      this.frameBig.interactive = false
+      this.numBig.map(v => this._container.addChild(v))
+      this.numBig[this.Num].visible = true
     })
 
     // 加减号
@@ -384,20 +483,21 @@ export default class Start extends Common {
       v.on('pointertap', () => {
         getSound('audio_cong').play()
         this.yy.visible = true
-        this._stage.addChild(this.yy)
-        this.eqBigArr.map(v => this._stage.addChild(v))
-        this.markBigArr.map(v => this._stage.addChild(v))
-        this.goodsBigArr[0].map(v => this._stage.addChild(v))
-        this.goodsBigArr[1].map(v => this._stage.addChild(v))
-        this.goodsBigArr[2].map(v => this._stage.addChild(v))
+        this.frameBig.interactive = true
+        this._container.addChild(this.yy)
+        this.eqBigArr.map(v => this._container.addChild(v))
+        this.markBigArr.map(v => this._container.addChild(v))
+        this.goodsBigArr[0].map(v => this._container.addChild(v))
+        this.goodsBigArr[1].map(v => this._container.addChild(v))
+        this.goodsBigArr[2].map(v => this._container.addChild(v))
         this.intFun(false)
 
         if (i === 0) {
-          this.goodsBigFun(this.hundredsBigArr1, this.tensBigArr1, this.onesBigArr1, this.eqBigArr[0], 64, this.num1, this.num2, null)
+          this.goodsBigFun(this.hundredsBigArr1, this.tensBigArr1, this.onesBigArr1, this.eqBigArr[0], 0, 64, this.num1, this.num2, null)
         } else if (i === 1) {
-          this.goodsBigFun(this.hundredsBigArr1, this.tensBigArr1, this.onesBigArr1, this.eqBigArr[1], 40, this.num3, this.num4, null)
+          this.goodsBigFun(this.hundredsBigArr1, this.tensBigArr1, this.onesBigArr1, this.eqBigArr[1], 1, 40, this.num3, this.num4, null)
         } else {
-          this.goodsBigFun(this.hundredsBigArr2, this.tensBigArr2, this.onesBigArr2, this.eqBigArr[2], 100, this.num5, this.num6, this.num7)
+          this.goodsBigFun(this.hundredsBigArr2, this.tensBigArr2, this.onesBigArr2, this.eqBigArr[2], 2, 100, this.num5, this.num6, this.num7)
         }
       })
     })
@@ -439,6 +539,49 @@ export default class Start extends Common {
       })
     })
 
+    // 大单位
+    this.unitArr.map((v, i) => {
+      v.on('pointertap', () => {
+        getSound('audio_cong').play()
+        v.interactive = false
+        this.unitBigArr.map(v => this._container.addChild(v))
+
+        if (this.Num === 0) {
+          if (i === 0) {
+            this.unitBigArr[1].position.x = 1132
+            this.unitBigArr[1].visible = true
+          }
+          if (i === 1) {
+            this.unitBigArr[2].position.x = 1237
+            this.unitBigArr[2].visible = true
+          }
+        } else if (this.Num === 1) {
+          if (i === 0) {
+            this.unitBigArr[1].position.x = 1132
+            this.unitBigArr[1].visible = true
+          }
+          if (i === 1) {
+            this.unitBigArr[2].position.x = 1237
+            this.unitBigArr[2].visible = true
+          }
+        } else if (this.Num === 2) {
+          if (i === 0) {
+            this.unitBigArr[0].position.x = 1102
+            this.unitBigArr[0].visible = true
+          }
+          if (i === 1) {
+            this.unitBigArr[1].position.x = 1185
+            this.unitBigArr[1].visible = true
+          }
+          if (i === 2) {
+            this.unitBigArr[2].position.x = 1267.5
+            this.unitBigArr[2].visible = true
+          }
+        }
+
+      })
+    })
+
     // 阴影
     this.yy.on('pointertap', () => {
       getSound('audio_cong').play()
@@ -464,6 +607,20 @@ export default class Start extends Common {
             this.markArr[3].interactive = this.num2 === 0 ? false : true
           }
         })
+        // 数字框消失
+        this.numFun()
+
+        // 小单位数字
+        if (this.unitBigArr[1].visible) {
+          this.unit1Arr[0].visible = true
+        }
+        if (this.unitBigArr[2].visible) {
+          this.unit1Arr[1].visible = true
+        }
+
+        // 单位 数字消失
+        this.unitArr.map(v => v.visible = false)
+        this.unitBigArr.map(v => v.visible = false)
       } else if (this.Num === 1) {
         // 40
         this.goodsArr2.map((v, i) => {
@@ -475,6 +632,20 @@ export default class Start extends Common {
             this.markArr[7].interactive = this.num4 === 0 ? false : true
           }
         })
+        // 数字框消失
+        this.numFun()
+
+        // 小单位数字
+        if (this.unitBigArr[1].visible) {
+          this.unit2Arr[0].visible = true
+        }
+        if (this.unitBigArr[2].visible) {
+          this.unit2Arr[1].visible = true
+        }
+
+        // 单位 数字消失
+        this.unitArr.map(v => v.visible = false)
+        this.unitBigArr.map(v => v.visible = false)
       } else if (this.Num === 2) {
         // 100
         this.goodsArr3.map((v, i) => {
@@ -489,6 +660,23 @@ export default class Start extends Common {
             this.markArr[13].interactive = this.num7 === 0 ? false : true
           }
         })
+        // 数字框消失
+        this.numFun()
+
+        // 小单位数字
+        if (this.unitBigArr[0].visible) {
+          this.unit3Arr[0].visible = true
+        }
+        if (this.unitBigArr[1].visible) {
+          this.unit3Arr[1].visible = true
+        }
+        if (this.unitBigArr[2].visible) {
+          this.unit3Arr[2].visible = true
+        }
+
+        // 单位 数字消失
+        this.unitArr.map(v => v.visible = false)
+        this.unitBigArr.map(v => v.visible = false)
       }
     })
   }
@@ -512,7 +700,13 @@ export default class Start extends Common {
     }
 
     this.aniArr[num].visible = true
-    this.btnArr.map(v => this._stage.addChild(v))
+
+    // 单位
+    this.unit1Arr.map(v => this._container.addChild(v))
+    this.unit2Arr.map(v => this._container.addChild(v))
+    this.unit3Arr.map(v => this._container.addChild(v))
+
+    this.btnArr.map(v => this._container.addChild(v))
     this.aniArr[num].state.setAnimation(0, 'in', false).listener = {
       complete: () => {
         this.aniArr[num].visible = false
@@ -541,9 +735,13 @@ export default class Start extends Common {
             }
           }
         })
-        this.btnArr[1].interactive = num === 2 ? false : true
+        this.btnArr[2].interactive = num === 2 ? false : true
       }
     }
+
+    this.unit1Arr.map(v => v.visible = false)
+    this.unit2Arr.map(v => v.visible = false)
+    this.unit3Arr.map(v => v.visible = false)
   }
 
   goodsFun(arr, num, x, x2, x3, y) {
@@ -560,7 +758,7 @@ export default class Start extends Common {
         v.ones = 0
         v.anchor.set(0.5)
         v.visible = false
-        this._stage.addChild(v)
+        this._container.addChild(v)
         v.position.y = y - j * 19
       })
     })
@@ -633,8 +831,24 @@ export default class Start extends Common {
     return num
   }
 
-  goodsBigFun(arr1, arr2, arr3, val, num, num2, num3, num4) {
+  numFun() {
+    let num = false
+    this.numBig.map((v, i) => {
+      if (v.visible && this.Num === i) {
+        num = i
+      }
+    })
+    if (num !== false) {
+      this.num[num].visible = true
+    }
+    // 大数字框消失
+    this.frameBig.visible = false
+    this.numBig.map(v => v.visible = false)
+  }
+
+  goodsBigFun(arr1, arr2, arr3, val, index, num, num2, num3, num4) {
     val.visible = true
+
     // 调整珠子位置
     this.goodsBigArr.map((v, i) => {
       v.map((v, j) => {
@@ -678,6 +892,84 @@ export default class Start extends Common {
       }
     })
 
+    // 显示数字框
+    this.frameBig.visible = true
+    this._container.addChild(this.frameBig)
+
+
+    // 大单位
+    if (index === 0) {
+      this.unitArr.map((v, i) => {
+        if (i < 2) v.visible = true
+        v.position.x = this.unitArrZb1[i]
+        this._container.addChild(v)
+      })
+      this.unitBigArr.map(v => this._container.addChild(v))
+      if (this.unit1Arr[0].visible) {
+        this.unitBigArr[1].visible = true
+        this.unitArr[0].interactive = false
+      } else {
+        this.unitArr[0].interactive = true
+      }
+
+      if (this.unit1Arr[1].visible) {
+        this.unitBigArr[2].visible = true
+        this.unitArr[1].interactive = false
+      } else {
+        this.unitArr[1].interactive = true
+      }
+
+    } else if (index === 1) {
+      this.unitArr.map((v, i) => {
+        if (i < 2) v.visible = true
+        v.position.x = this.unitArrZb1[i]
+        this._container.addChild(v)
+      })
+
+      this.unitBigArr.map(v => this._container.addChild(v))
+      if (this.unit2Arr[0].visible) {
+        this.unitBigArr[1].visible = true
+        this.unitArr[0].interactive = false
+      } else {
+        this.unitArr[0].interactive = true
+      }
+
+      if (this.unit2Arr[1].visible) {
+        this.unitBigArr[2].visible = true
+        this.unitArr[1].interactive = false
+      } else {
+        this.unitArr[1].interactive = true
+      }
+    } else if (index === 2) {
+      this.unitArr.map((v, i) => {
+        v.visible = true
+        v.position.x = this.unitArrZb2[i]
+        this._container.addChild(v)
+      })
+
+      this.unitBigArr.map(v => this._container.addChild(v))
+      if (this.unit3Arr[0].visible) {
+        this.unitBigArr[0].visible = true
+        this.unitArr[0].interactive = false
+      } else {
+        this.unitArr[0].interactive = true
+      }
+
+      if (this.unit3Arr[1].visible) {
+        this.unitBigArr[1].visible = true
+        this.unitArr[1].interactive = false
+      } else {
+        this.unitArr[1].interactive = true
+      }
+
+      if (this.unit3Arr[2].visible) {
+        this.unitBigArr[2].visible = true
+        this.unitArr[2].interactive = false
+      } else {
+        this.unitArr[2].interactive = true
+      }
+    }
+
     // 启用减号功能
     if (num2 !== 0) {
       this.markBigArr[1].interactive = true
@@ -687,6 +979,13 @@ export default class Start extends Common {
     }
     if (num4 !== 0) {
       this.markBigArr[5].interactive = true
+    }
+
+    // 判断数字框是否出现
+    if (this.num[index].visible) {
+      this.frameBig.interactive = false
+      this.numBig.map(v => this._container.addChild(v))
+      this.numBig[index].visible = true
     }
   }
 

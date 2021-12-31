@@ -83,20 +83,20 @@ export default class Start extends Common {
         if (i === 0) {
           v.interactive = false
           this.loong.state.setAnimation(0, 'talk', true)
-          getSound('audio_a+1-5-32').play()
+          getSound('audio_32').play()
           this.time = setTimeout(() => {
             v.interactive = true
             this.loong.state.setAnimation(0, 'idle', true)
-          }, Number(getSound('audio_a+1-5-32').duration.toFixed(3) * 1000));
+          }, Number(getSound('audio_32').duration.toFixed(3) * 1000));
 
         } else if (i === 1) {
           clearTimeout(this.time)
-          getSound('audio_a+1-5-32').stop()
+          getSound('audio_32').stop()
           this._container.visible = false
           new Start2().init()
         } else if (i === 3) {
           clearTimeout(this.time)
-          getSound('audio_a+1-5-32').stop()
+          getSound('audio_32').stop()
           this.init()
         }
       })
