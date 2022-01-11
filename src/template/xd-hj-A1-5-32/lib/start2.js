@@ -11,10 +11,13 @@ import start5 from './json/start5.json'
 import start6 from './json/start6.json'
 import start7 from './json/start7.json'
 
+let that
 export default class Start2 extends Common {
   constructor() {
     super()
     this.btnArrZb = [1017.5, 1223, 1428]
+
+    that = this
 
     // 按钮
     this.btnArr = [createSprite('image_btn3'), createSprite('image_btn4'), createSprite('image_btn5')]
@@ -28,11 +31,20 @@ export default class Start2 extends Common {
     this.ip6 = createSprite('image_ip6')
     this.ip7 = createSprite('image_ip7')
 
+    // 图形蒙层
+    this.ipM1 = createSprite('image_ip1')
+    this.ipM2 = createSprite('image_ip2')
+    this.ipM3 = createSprite('image_ip3')
+    this.ipM4 = createSprite('image_ip4')
+    this.ipM5 = createSprite('image_ip5')
+    this.ipM6 = createSprite('image_ip6')
+    this.ipM7 = createSprite('image_ip7')
+
     // 问号
     this.wh = createSprite('image_wh')
 
     // 提示
-    this.hint = createSprite('image_hint')
+    this.hint = createSprite('image_hint2')
 
     // 阴影
     this.yy = createSprite('image_yy')
@@ -76,6 +88,15 @@ export default class Start2 extends Common {
     this.ipInit(this.ip6, start6, 595, 624, 5)
     this.ipInit(this.ip7, start7, 444, 814, 6)
 
+    // 图形蒙层
+    this.ipMInit(this.ipM1, start1, 1078.5, 474, 0, Math.PI / 4 * 7)
+    this.ipMInit(this.ipM2, start2, 1149, 846, 1, Math.PI / 4 * 6)
+    this.ipMInit(this.ipM3, start3, 1148, 634, 2, Math.PI / 4)
+    this.ipMInit(this.ipM4, start4, 1365, 618, 3, Math.PI / 4 * 5)
+    this.ipMInit(this.ipM5, start5, 978, 574, 4, Math.PI / 4 * 7)
+    this.ipMInit(this.ipM6, start6, 1148, 724, 5, 0)
+    this.ipMInit(this.ipM7, start7, 1228, 481, 6, Math.PI / 4 * 5)
+
     // 问号
     this.wh.anchor.set(0.5)
     this.wh.cursor = 'pointer'
@@ -114,7 +135,7 @@ export default class Start2 extends Common {
         } else if (i === 2) {
           v.scale.set(1)
           clearTimeout(this.time)
-          getSound('audio_a+1-5-37').stop()
+          getSound('audio_32').stop()
           this._container.removeChild(this.ani)
           this._container.removeChild(this.ani2)
           this.init()
@@ -129,6 +150,35 @@ export default class Start2 extends Common {
         .on('pointerup', this.onEnd.bind(this))
         .on('pointerupoutside', this.onEnd.bind(this))
     }
+
+    // 图形蒙层
+    this.ipM1.on('pointertap', (e) => {
+      this.num1 = this.ipMFun(this.num1, this.ip1, this.ip2, 7, 3, e)
+    })
+
+    this.ipM2.on('pointertap', (e) => {
+      this.num2 = this.ipMFun(this.num2, this.ip2, this.ip1, 6, 2, e)
+    })
+
+    this.ipM3.on('pointertap', (e) => {
+      this.num3 = this.ipMFun2(this.num3, this.ip3, 1, e)
+    })
+
+    this.ipM4.on('pointertap', (e) => {
+      this.num4 = this.ipMFun2(this.num4, this.ip4, 5, e)
+    })
+
+    this.ipM5.on('pointertap', (e) => {
+      this.num5 = this.ipMFun2(this.num5, this.ip5, 7, e)
+    })
+
+    this.ipM6.on('pointertap', (e) => {
+      this.num6 = this.ipMFun2(this.num6, this.ip6, 0, e)
+    })
+
+    this.ipM7.on('pointertap', (e) => {
+      this.num7 = this.ipMFun2(this.num7, this.ip7, 5, e)
+    })
 
     // 问号
     this.wh.on('pointerdown', () => {
@@ -187,8 +237,6 @@ export default class Start2 extends Common {
     if (!current.dragging) return
     current.dragging = false
 
-    console.log(current.position.x, current.position.y, current.width / 2, current.height / 2);
-
     if (current.Click) { // 点击
       getSound('audio_cong').play()
       // 判断旋转还是翻转
@@ -206,6 +254,7 @@ export default class Start2 extends Common {
         })
       } else { // 旋转
         let circle = current.rotation + Math.PI / 4
+        console.log(circle);
         this.ipInteractive(false)
         TweenMax.to(current, 0.5, {
           rotation: circle,
@@ -224,37 +273,37 @@ export default class Start2 extends Common {
       let Y = current.position.y
       if (1034.5 < X && X < 1169.5 && 377 < Y && Y < 513 && !this.num1) {
         if ((current.index === 0 && current.num === 7) || (current.index === 1 && current.num === 3)) {
-          this.num1 = this.placePosition(current, 1078.5, 474)
+          this.num1 = this.placePosition(current, 1078.5, 474, this.ipM1)
         }
       }
       if (1114.5 < X && X < 1183.5 && 778.5 < Y && Y < 913.5 && !this.num2) {
         if ((current.index === 0 && current.num === 2) || (current.index === 1 && current.num === 6)) {
-          this.num2 = this.placePosition(current, 1149, 846)
+          this.num2 = this.placePosition(current, 1149, 846, this.ipM2)
         }
       }
       if (1080.5 < X && X < 1215.5 && 566.5 < Y && Y < 701.5) {
         if (current.index === 2 && current.num === 1) {
-          this.num3 = this.placePosition(current, 1148, 634)
+          this.num3 = this.placePosition(current, 1148, 634, this.ipM3)
         }
       }
       if (1251.5 < X && X < 1478.5 && 550.5 < Y && Y < 685.5) {
         if (current.index === 3 && current.num === 5) {
-          this.num4 = this.placePosition(current, 1365, 618)
+          this.num4 = this.placePosition(current, 1365, 618, this.ipM4)
         }
       }
       if (800 < X && X < 1156 && 506.5 < Y && Y < 641.5) {
         if (current.index === 4 && current.num === 7) {
-          this.num5 = this.placePosition(current, 978, 574)
+          this.num5 = this.placePosition(current, 978, 574, this.ipM5)
         }
       }
       if (1080.5 < X && X < 1215.5 && 656 < Y && Y < 792) {
         if (current.index === 5) {
-          this.num6 = this.placePosition(current, 1148, 724)
+          this.num6 = this.placePosition(current, 1148, 724, this.ipM6)
         }
       }
       if (1050 < X && X < 1406 && 413.5 < Y && Y < 548.5) {
         if (current.index === 6 && current.num === 5) {
-          this.num7 = this.placePosition(current, 1228, 481)
+          this.num7 = this.placePosition(current, 1228, 481, this.ipM7)
         }
       }
     }
@@ -308,6 +357,43 @@ export default class Start2 extends Common {
     }
   }
 
+  // 蒙层按钮
+  ipMFun(flag, ip1, ip2, num, num2, e) {
+    getSound('audio_cong').play()
+    let current = e.currentTarget
+    if (flag === false) {
+      current.interactive = false
+      if (ip1.interactive) {
+        ip1.interactive = false
+        ip1.num = num
+        ip1.rotation = Math.PI / 4 * num
+        ip1.position.set(current.x, current.y)
+      } else if (ip2.interactive) {
+        ip2.interactive = false
+        ip2.num = num2
+        ip2.rotation = Math.PI / 4 * num2
+        ip2.position.set(current.x, current.y)
+      }
+    }
+
+    return true
+  }
+
+  // 蒙层按钮2
+  ipMFun2(flag, ip, num, e) {
+    getSound('audio_cong').play()
+    let current = e.currentTarget
+    if (flag === false && ip.interactive) {
+      current.interactive = false
+      ip.interactive = false
+      ip.num = num
+      ip.rotation = Math.PI / 4 * num
+      ip.position.set(current.x, current.y)
+    }
+
+    return true
+  }
+
   // 按钮交互
   ipInteractive(flag) {
     this.ip1.interactive = this.num1 === true ? false : flag
@@ -339,10 +425,29 @@ export default class Start2 extends Common {
     e.position.set(X, Y)
   }
 
+  // 设置图形蒙层初始位置
+  ipMInit(e, start, X, Y, num, rot) {
+    const hitAreaShapes = new HitAreaShapes(start)
+    e.hitArea = hitAreaShapes
+
+    e.flag = false
+    e.index = num
+    e.alpha = 0
+    e.scale.set(1)
+    e.pivot.set(e.width / 2, e.height / 2)
+    e.cursor = 'pointer'
+    e.interactive = true
+    e.rotation = rot
+    this._container.addChild(e)
+    e.position.set(X, Y)
+  }
+
   // 放置位置
-  placePosition(current, x, y) {
+  placePosition(current, x, y, flag) {
+    flag.interactive = false
     current.interactive = false
     current.position.set(x, y)
+
     return true
   }
 

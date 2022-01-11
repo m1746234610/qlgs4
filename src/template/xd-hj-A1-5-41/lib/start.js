@@ -13,8 +13,9 @@ import start7 from './json/start7.json'
 export default class Start extends Common {
   constructor() {
     super()
+    this.btnArrZb = [1065, 1269, 1432.5]
     // 按钮
-    this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2')]
+    this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2'), createSprite('image_btn3')]
 
     // 图形
     this.ip1 = createSprite('image_ip1')
@@ -24,6 +25,15 @@ export default class Start extends Common {
     this.ip5 = createSprite('image_ip5')
     this.ip6 = createSprite('image_ip6')
     this.ip7 = createSprite('image_ip7')
+
+    // 图形蒙层
+    this.ipM1 = createSprite('image_ip1')
+    this.ipM2 = createSprite('image_ip2')
+    this.ipM3 = createSprite('image_ip3')
+    this.ipM4 = createSprite('image_ip4')
+    this.ipM5 = createSprite('image_ip5')
+    this.ipM6 = createSprite('image_ip6')
+    this.ipM7 = createSprite('image_ip7')
 
     // 恐龙
     this.loong = createSprite('image_loong')
@@ -50,7 +60,7 @@ export default class Start extends Common {
     this.head = false
     this.body = false
     this.leftLeg = false
-    this.rightLegEnd = false
+    this.rightLeg = false
     this.tail = false
     this.ani = getAnimation('animation_long')
     this.ani2 = getAnimation('animation_xiyi')
@@ -63,7 +73,7 @@ export default class Start extends Common {
       v.cursor = 'pointer'
       v.interactive = true
       this._stage.addChild(v)
-      v.position.set(1224.5 + i * 208, 972.5)
+      v.position.set(this.btnArrZb[i], 972.5)
     })
 
     // 图形
@@ -74,6 +84,15 @@ export default class Start extends Common {
     this.ipInit(this.ip5, start5, 406, 598.5, 4)
     this.ipInit(this.ip6, start6, 665, 600, 5)
     this.ipInit(this.ip7, start7, 498, 780.5, 6)
+
+    // 图形蒙层
+    this.ipMInit(this.ipM1, start1, 971, 337.5, 0, Math.PI / 4 * 7)
+    this.ipMInit(this.ipM2, start2, 1236, 337, 1, Math.PI / 4)
+    this.ipMInit(this.ipM3, start3, 1297, 624, 2, Math.PI / 4 * 3)
+    this.ipMInit(this.ipM4, start4, 1046, 708.5, 3, Math.PI / 4 * 5)
+    this.ipMInit(this.ipM5, start5, 1104, 549, 4, Math.PI / 4 * 6)
+    this.ipMInit(this.ipM6, start6, 1104, 359, 5, 0)
+    this.ipMInit(this.ipM7, start7, 1231, 705, 6, Math.PI / 4 * 2)
 
     // 龙
     this.ani.state.setAnimation(0, 'idle', true)
@@ -113,6 +132,23 @@ export default class Start extends Common {
       }).on('pointerup', () => {
         if (i === 1) {
           v.scale.set(1)
+          if (this.leftEar && this.rightEar && this.head && this.body && this.leftLeg && this.rightLeg && this.tail) {
+            this.ipInteractive(false)
+            getSound('audio_37').play()
+
+            this.loong.visible = false
+            this.ani.state.setAnimation(0, 'talk', true)
+            this.ani2.state.setAnimation(0, 'right', false)
+            this._stage.addChild(this.ani2)
+            this._stage.addChild(this.ani)
+
+            this.time = setTimeout(() => {
+              this.loong.visible = true
+              this.ani.state.setAnimation(0, 'idle', true)
+            }, 2000);
+          }
+        } else if (i === 2) {
+          v.scale.set(1)
           clearTimeout(this.time)
           getSound('audio_37').stop()
           this._stage.removeChild(this.ani)
@@ -129,6 +165,35 @@ export default class Start extends Common {
         .on('pointerup', this.onEnd.bind(this))
         .on('pointerupoutside', this.onEnd.bind(this))
     }
+
+    // 图形蒙层
+    this.ipM1.on('pointertap', (e) => {
+      this.leftEar = this.ipMFun(this.leftEar, this.ip1, this.ip2, 7, 3, e)
+    })
+
+    this.ipM2.on('pointertap', (e) => {
+      this.rightEar = this.ipMFun(this.rightEar, this.ip2, this.ip1, 1, 5, e)
+    })
+
+    this.ipM3.on('pointertap', (e) => {
+      this.tail = this.ipMFun2(this.tail, this.ip3, 3, e)
+    })
+
+    this.ipM4.on('pointertap', (e) => {
+      this.leftLeg = this.ipMFun2(this.leftLeg, this.ip4, 5, e)
+    })
+
+    this.ipM5.on('pointertap', (e) => {
+      this.body = this.ipMFun2(this.body, this.ip5, 6, e)
+    })
+
+    this.ipM6.on('pointertap', (e) => {
+      this.head = this.ipMFun2(this.head, this.ip6, 0, e)
+    })
+
+    this.ipM7.on('pointertap', (e) => {
+      this.rightLeg = this.ipMFun2(this.rightLeg, this.ip7, 2, e)
+    })
 
     // 问号
     this.wh.on('pointerdown', () => {
@@ -220,67 +285,35 @@ export default class Start extends Common {
       let X = current.position.x
       let Y = current.position.y
       if (928 < X && X < 1057 && 258 < Y && Y < 387) { // 左耳
-        this.leftEar = this.halfCirclePosition(current, this.leftEar, 971, 337.5, 7, 3)
+        this.leftEar = this.halfCirclePosition(current, this.leftEar, 971, 337.5, 7, 3, this.ipM1)
       }
       if (1193.5 < X && X < 1322.5 && 258 < Y && Y < 387) { // 右耳
-        this.rightEar = this.halfCirclePosition(current, this.rightEar, 1236, 337, 5, 1)
+        this.rightEar = this.halfCirclePosition(current, this.rightEar, 1236, 337, 5, 1, this.ipM2)
       }
       if (1039.5 < X && X < 1168.5 && 294.5 < Y && Y < 423.5) { // 头
         if (current.index === 5 && this.head !== true) {
-          this.head = true
-          current.interactive = false
-          current.position.set(1104, 359)
+          this.head = this.placePosition(current, 1104, 359, this.ipM6)
         }
       }
       if (1039.5 < X && X < 1168.5 && 357 < Y && Y < 741) { // 身体
         if (current.index === 4 && current.num === 6 && current.circleX === 1) {
-          this.body = true
-          current.interactive = false
-          current.position.set(1104, 549)
+          this.body = this.placePosition(current, 1104, 549, this.ipM5)
         }
       }
       if (955 < X && X < 1137 && 644 < Y && Y < 733) { // 左腿
         if (current.index === 3 && current.num === 5 && current.circleX === 1) {
-          this.leftLeg = true
-          current.interactive = false
-          current.position.set(1046, 708.5)
+          this.leftLeg = this.placePosition(current, 1046, 708.5, this.ipM4)
         }
       }
-      if (1160 < X && X < 1300 && 530 < Y && Y < 880) { // 右腿根
+      if (1160 < X && X < 1300 && 530 < Y && Y < 880) { // 右腿
         if (current.index === 6 && current.num === 2) {
-          this.rightLegEnd = true
-          current.interactive = false
-          current.position.set(1231, 705)
+          this.rightLeg = this.placePosition(current, 1231, 705, this.ipM7)
         }
       }
       if (1250 < X && X < 1350 && 530 < Y && Y < 715) { // 尾巴
         if (current.index === 2 && current.num === 3) {
-          this.tail = true
-          current.interactive = false
-          current.position.set(1297, 624)
+          this.tail = this.placePosition(current, 1297, 624, this.ipM3)
         }
-      }
-
-      if (this.leftEar && this.rightEar && this.head && this.body && this.leftLeg && this.rightLegEnd && this.tail) {
-        this.ipInteractive(false)
-
-        getSound('audio_37').play()
-
-        this.loong.visible = false
-        this.ani.state.setAnimation(0, 'talk', true)
-        this._stage.addChild(this.ani)
-
-        this.ani2.state.setAnimation(0, 'right', false)
-        this.ani2.position.set(600, -20)
-        this._stage.addChild(this.ani2)
-
-        this.time = setTimeout(() => {
-          this.loong.visible = true
-          // this.ani.state.setAnimation(0, 'talk', true)
-          // this._stage.addChild(this.ani)
-
-          this.ani.state.setAnimation(0, 'idle', true)
-        }, 2000);
       }
     }
   }
@@ -334,7 +367,8 @@ export default class Start extends Common {
   }
 
   // 半圆的位置
-  halfCirclePosition(current, direction, X, Y, num, num2) {
+  halfCirclePosition(current, direction, X, Y, num, num2, flag) {
+    flag.interactive = false
     if (current.index === 0 && current.num === num) {
       if (direction !== true) {
         direction = true
@@ -353,11 +387,14 @@ export default class Start extends Common {
 
   // 按钮交互
   ipInteractive(flag) {
-    for (let i = 1; i < 8; i++) {
-      this[`ip${i}`].interactive = flag
-    }
+    this.ip1.interactive = this.leftEar === true ? false : flag
+    this.ip2.interactive = this.rightEar === true ? false : flag
+    this.ip3.interactive = this.tail === true ? false : flag
+    this.ip4.interactive = this.leftLeg === true ? false : flag
+    this.ip5.interactive = this.body === true ? false : flag
+    this.ip6.interactive = this.head === true ? false : flag
+    this.ip7.interactive = this.rightLeg === true ? false : flag
   }
-
 
   // 设置图形初始位置
   ipInit(e, start, X, Y, num) {
@@ -377,6 +414,69 @@ export default class Start extends Common {
     e.rotation = 0
     this._stage.addChild(e)
     e.position.set(X, Y)
+  }
+
+  // 设置图形蒙层初始位置
+  ipMInit(e, start, X, Y, num, rot) {
+    const hitAreaShapes = new HitAreaShapes(start)
+    e.hitArea = hitAreaShapes
+
+    e.flag = false
+    e.index = num
+    e.alpha = 0
+    e.scale.set(1)
+    e.pivot.set(e.width / 2, e.height / 2)
+    e.cursor = 'pointer'
+    e.interactive = true
+    e.rotation = rot
+    this._stage.addChild(e)
+    e.position.set(X, Y)
+  }
+
+  // 蒙层按钮
+  ipMFun(flag, ip1, ip2, num, num2, e) {
+    getSound('audio_cong').play()
+    let current = e.currentTarget
+    if (flag === false) {
+      current.interactive = false
+      if (ip1.interactive) {
+        ip1.interactive = false
+        ip1.num = num
+        ip1.rotation = Math.PI / 4 * num
+        ip1.position.set(current.x, current.y)
+      } else if (ip2.interactive) {
+        ip2.interactive = false
+        ip2.num = num2
+        ip2.rotation = Math.PI / 4 * num2
+        ip2.position.set(current.x, current.y)
+      }
+    }
+
+    return true
+  }
+
+  // 蒙层按钮2
+  ipMFun2(flag, ip, num, e) {
+    getSound('audio_cong').play()
+    let current = e.currentTarget
+    if (flag === false && ip.interactive) {
+      current.interactive = false
+      ip.interactive = false
+      ip.num = num
+      ip.rotation = Math.PI / 4 * num
+      ip.position.set(current.x, current.y)
+    }
+
+    return true
+  }
+
+  // 放置位置
+  placePosition(current, x, y, flag) {
+    flag.interactive = false
+    current.interactive = false
+    current.position.set(x, y)
+
+    return true
   }
 
 }

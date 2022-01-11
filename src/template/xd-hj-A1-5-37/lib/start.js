@@ -24,8 +24,10 @@ export default class Start extends Common {
       { x: 1219, y: 421.5 },
       { x: 1200, y: 414 }]
 
+    this.btnArrZb = [1065, 1269, 1432.5]
+
     // 按钮
-    this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2')]
+    this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2'), createSprite('image_btn3')]
 
     // 图形
     this.ip1 = createSprite('image_ip1')
@@ -36,8 +38,12 @@ export default class Start extends Common {
     this.ip6 = createSprite('image_ip6')
     this.ip7 = createSprite('image_ip7')
 
-    // 恐龙
-    this.loong = createSprite('image_loong')
+    // 图形蒙层
+    this.ipM1 = createSprite('image_ip6')
+    this.ipM3 = createSprite('image_ip7')
+    this.ipM5 = createSprite('image_ip5')
+    this.ipM6 = createSprite('image_ip6')
+    this.ipM7 = createSprite('image_ip7')
 
     // 问号
     this.wh = createSprite('image_wh')
@@ -73,7 +79,7 @@ export default class Start extends Common {
       v.cursor = 'pointer'
       v.interactive = true
       this._stage.addChild(v)
-      v.position.set(1269.5 + i * 163, 969.5)
+      v.position.set(this.btnArrZb[i], 969.5)
     })
 
     // 图形
@@ -84,6 +90,13 @@ export default class Start extends Common {
     this.ipInit(this.ip5, start5, 581, 663.5, 4)
     this.ipInit(this.ip6, start6, 804.5, 662.5, 5)
     this.ipInit(this.ip7, start7, 586, 829.5, 6)
+
+    // 图形蒙层
+    this.ipMInit(this.ipM1, start6, 1218, 394, 0, 0, 1)
+    this.ipMInit(this.ipM3, start7, 1221, 732, 1, Math.PI / 4, -1)
+    this.ipMInit(this.ipM5, start5, 1300, 638, 3, Math.PI / 4 * 6, 1)
+    this.ipMInit(this.ipM6, start6, 1381, 394, 4, 0, 1)
+    this.ipMInit(this.ipM7, start7, 1381, 732, 5, Math.PI / 4 * 7, 1)
 
     // 龙
     this.ani.state.setAnimation(0, 'idle', true)
@@ -114,6 +127,9 @@ export default class Start extends Common {
     getSound('audio_cong').volume = 0.15
     getSound('audio_error').volume = 0.15
     getSound('audio_click').volume = 0.15
+    window.onclick = function (e) {
+      // console.log(e.x);
+    }
 
     // 按钮
     this.btnArr.map((v, i) => {
@@ -122,6 +138,23 @@ export default class Start extends Common {
         v.scale.set(0.9)
       }).on('pointerup', () => {
         if (i === 1) {
+          v.scale.set(1)
+          if (this.leftSay === true && this.rightSay === true && this.body === true && this.leftLeg === true && this.rightLeg === true) {
+            this.ipInteractive(false)
+
+            getSound('audio_37').play()
+
+            this.ani.state.setAnimation(0, 'talk', true)
+            this.ani2.state.setAnimation(0, 'right', false)
+            
+            this._stage.addChild(this.ani2)
+            this._stage.addChild(this.ani)
+
+            this.time = setTimeout(() => {
+              this.ani.state.setAnimation(0, 'idle', true)
+            }, 2000);
+          }
+        } else if (i === 2) {
           v.scale.set(1)
           clearTimeout(this.time)
           getSound('audio_37').stop()
@@ -139,6 +172,212 @@ export default class Start extends Common {
         .on('pointerup', this.onEnd.bind(this))
         .on('pointerupoutside', this.onEnd.bind(this))
     }
+
+    // 图形蒙层
+    this.ipM1.on('pointertap', (e) => { // 左眼
+      getSound('audio_cong').play()
+      if (this.leftSay === false && (this.rightSay === false || this.rightSay === true)) {
+        this.leftSay = 1
+
+        this.ip1.num = 0
+        this.ip1.rotation = Math.PI / 4 * 0
+        this.placeTrue(this.ip1, this.sayZb[0].x, this.sayZb[0].y)
+      } else if (this.leftSay === 1) {
+        this.leftSay = true
+        this.ipM1.interactive = false
+        if (this.ip1.interactive) { // 左没放
+          // 计算ip2放入的角度
+          let num = this.ip2.num
+
+          this.ip1.num = this.ip2.num
+          this.ip1.rotation = this.ip2.rotation
+          this.placeTrue(this.ip1, this.sayZb[num].x, this.sayZb[num].y)
+        } else if (this.ip2.interactive) { // 右没放
+          // 计算ip1放入的角度
+          let num = this.halfCircleNum(this.ip1.num)
+
+          this.ip2.num = this.ip1.num
+          this.ip2.rotation = this.ip1.rotation
+          this.placeTrue(this.ip2, this.sayZb[num].x, this.sayZb[num].y)
+        }
+      } else if (this.leftSay === false && (!this.ip1.interactive || !this.ip2.interactive)) {
+        if (this.ip6.interactive) {
+          this.leftSay = true
+          this.ipM1.interactive = false
+          this.placeTrue(this.ip6, 1218, 394)
+        }
+      }
+    })
+
+    this.ipM6.on('pointertap', (e) => { // 右眼
+      getSound('audio_cong').play()
+      let x = 162.5
+      if (this.rightSay === false && (this.leftSay === false || this.leftSay === 1)) {
+        this.rightSay = true
+        this.ipM6.interactive = false
+        this.ip6.num = 0
+        this.ip6.rotation = Math.PI / 4 * 0
+        this.placeTrue(this.ip6, this.ipM6.x, this.ipM6.y)
+      } else if (this.rightSay === 1) {
+        this.rightSay = true
+        this.ipM6.interactive = false
+        if (this.ip1.interactive) { // 左没放
+          // 计算ip2放入的角度
+          let num = this.ip2.num
+
+          this.ip1.num = this.ip2.num
+          this.ip1.rotation = this.ip2.rotation
+          this.placeTrue(this.ip1, this.sayZb[num].x + x, this.sayZb[num].y)
+        } else if (this.ip2.interactive) { // 右没放
+          // 计算ip1放入的角度
+          let num = this.halfCircleNum(this.ip1.num)
+
+          this.ip2.num = this.ip1.num
+          this.ip2.rotation = this.ip1.rotation
+          this.placeTrue(this.ip2, this.sayZb[num].x + x, this.sayZb[num].y)
+        }
+      } else if (this.rightSay === false && !this.ip6.interactive) {
+        this.rightSay = 1
+
+        this.ip1.num = 0
+        this.ip1.rotation = Math.PI / 4 * 0
+        this.placeTrue(this.ip1, this.sayZb[0].x + 162.5, this.sayZb[0].y)
+      } else if (this.leftSay === true && this.ip6.interactive) {
+        this.rightSay = true
+        this.ipM6.interactive = false
+        this.ip6.num = 0
+        this.ip6.rotation = Math.PI / 4 * 0
+        this.placeTrue(this.ip6, this.ipM6.x, this.ipM6.y)
+      }
+    })
+
+    this.ipM3.on('pointertap', (e) => { // 左腿
+      getSound('audio_cong').play()
+      if (this.body === false && this.leftLeg === false && this.rightLeg === false) {
+        this.leftLeg = 1
+        this.ip3.num = 7
+        this.ip3.rotation = Math.PI / 4 * 7
+        this.placeTrue(this.ip3, 1245, 758)
+      } else if (this.leftLeg === 1) {
+        this.leftLeg = true
+        this.ipM3.interactive = false
+        if (this.ip3.interactive) { // 3没放
+          this.ip3.num = 7
+          this.ip3.rotation = Math.PI / 4 * 7
+          this.placeTrue(this.ip3, 1245, 758)
+        } else if (this.ip4.interactive) { // 4没放
+          this.ip4.num = 2
+          this.ip4.rotation = Math.PI / 4 * 2
+          this.placeTrue(this.ip4, 1198, 677)
+        }
+      } else if (this.body === true && this.ip5.circleX === 1) {
+        this.leftLeg = 1
+        this.ip3.num = 7
+        this.ip3.rotation = Math.PI / 4 * 7
+        this.placeTrue(this.ip3, 1245, 758)
+      } else if (this.rightLeg === true && !this.ip7.interactive && this.ip7.x > 1200) {
+        if (this.leftLeg === false) {
+          this.leftLeg = 1
+          this.ip3.num = 7
+          this.ip3.rotation = Math.PI / 4 * 7
+          this.placeTrue(this.ip3, 1245, 758)
+        } else {
+          if (this.ip3.interactive) { // 3没放
+            this.ip3.num = 7
+            this.ip3.rotation = Math.PI / 4 * 7
+            this.placeTrue(this.ip3, 1245, 758)
+          } else if (this.ip4.interactive) { // 4没放
+            this.ip4.num = 2
+            this.ip4.rotation = Math.PI / 4 * 2
+            this.placeTrue(this.ip4, 1198, 677)
+          }
+        }
+      } else if (((this.rightLeg === 1 || this.rightLeg === true) && this.ip7.interactive) || this.body === true && this.ip5.circleX === -1) {
+        this.leftLeg = true
+        this.ipM3.interactive = false
+        this.ip7.num = 2
+        this.ip7.circleX = -1
+        this.ip7.scale.set(-1, 1)
+        this.ip7.rotation = Math.PI / 4
+        this.placeTrue(this.ip7, 1221, 732)
+      }
+    })
+
+    this.ipM7.on('pointertap', (e) => { // 右腿
+      getSound('audio_cong').play()
+      if (this.body === false && this.leftLeg === false && this.rightLeg === false) {
+        this.rightLeg = true
+        this.ipM7.interactive = false
+
+        this.ip7.num = 7
+        this.ip7.rotation = Math.PI / 4 * 7
+        this.placeTrue(this.ip7, 1381, 732)
+      } else if (this.rightLeg === 1) {
+        this.rightLeg = true
+        this.ipM7.interactive = false
+        if (this.ip3.interactive) { // 3没放
+          this.ip3.num = 3
+          this.ip3.rotation = Math.PI / 4 * 3
+          this.placeTrue(this.ip3, 11355.5, 758)
+        } else if (this.ip4.interactive) { // 4没放
+          this.ip4.num = 6
+          this.ip4.circleX = -1
+          this.ip4.scale.set(-1, 1)
+          this.ip4.rotation = Math.PI / 4 * 6
+          this.placeTrue(this.ip4, 1402.5, 677)
+        }
+      } else if (this.body === true && this.ip5.circleX === -1) {
+        if (this.rightLeg === false) {
+          this.rightLeg = 1
+          this.ip3.num = 3
+          this.ip3.rotation = Math.PI / 4 * 3
+          this.placeTrue(this.ip3, 1355.5, 758)
+        } else {
+          if (this.ip3.interactive) { // 3没放
+            this.ip3.num = 3
+            this.ip3.rotation = Math.PI / 4 * 3
+            this.placeTrue(this.ip3, 1355.5, 758)
+          } else if (this.ip4.interactive) { // 4没放
+            this.ip4.num = 6
+            this.ip4.circleX = -1
+            this.ip4.scale.set(-1, 1)
+            this.ip4.rotation = Math.PI / 4 * 6
+            this.placeTrue(this.ip4, 1402.5, 677)
+          }
+        }
+      } else if (this.leftLeg === true && this.ip7.interactive) {
+        this.rightLeg = true
+        this.ipM7.interactive = false
+
+        this.ip7.num = 7
+        this.ip7.rotation = Math.PI / 4 * 7
+        this.placeTrue(this.ip7, 1381, 732)
+      } else if (this.leftLeg === 1 || (this.body === true && this.ip5.circleX === 1)) {
+        this.rightLeg = true
+        this.ipM7.interactive = false
+        this.ip7.num = 7
+        this.ip7.rotation = Math.PI / 4 * 7
+        this.placeTrue(this.ip7, 1381, 732)
+      }
+    })
+
+    this.ipM5.on('pointertap', (e) => { // 身体
+      getSound('audio_cong').play()
+      this.body = true
+      this.ipM5.interactive = false
+      this.placeTrue(this.ip5, 1300, 638)
+      if (((this.leftLeg === false) || (this.leftLeg === 1) || (this.leftLeg === true && this.ip4.x < 1200 && !this.ip4.interactive)) && (this.rightLeg === false || (this.rightLeg === true && this.ip7.x > 1200 && !this.ip7.interactive))) {
+        this.ip5.num = 6
+        this.ip5.circleX = 1
+        this.ip5.scale.set(1)
+        this.ip5.rotation = Math.PI / 4 * 6
+      } else if ((this.leftLeg === true && !this.ip7.interactive) || (this.rightLeg === 1) || (this.rightLeg === true && this.ip4.x > 1200 && !this.ip4.interactive)) {
+        this.ip5.num === 2
+        this.ip5.circleX === -1
+        this.ip5.scale.set(-1, 1)
+        this.ip5.rotation = Math.PI / 4 * 2
+      }
+    })
 
     // 问号
     this.wh.on('pointerdown', () => {
@@ -196,7 +435,6 @@ export default class Start extends Common {
     let current = e.currentTarget
     if (!current.dragging) return
     current.dragging = false
-    // console.log(current.x, current.y);
     if (current.Click) { // 点击
       getSound('audio_cong').play()
       // 判断旋转还是翻转
@@ -208,6 +446,7 @@ export default class Start extends Common {
           x: current.circleX,
           ease: Power0.easeOut,
           onComplete: () => {
+            console.log();
             this.rotate(current)
             this.ipInteractive(true)
           }
@@ -221,7 +460,6 @@ export default class Start extends Common {
           onComplete: () => {
             this.ipInteractive(true)
             current.num = current.num === 7 ? 0 : current.num + 1
-            // console.log(current.circleX, current.num);
           }
         })
       }
@@ -233,9 +471,11 @@ export default class Start extends Common {
       let Y = current.position.y
       if (1164 < X && X < 1273 && 340 < Y && Y < 448.5) { // 左眼
         this.leftSay = this.circlePosition(current, 'left', this.leftSay, this.rightSay)
+        if (this.leftSay === true) this.ipM1.interactive = false
       }
       if (1325.5 < X && X < 1434.5 && 340 < Y && Y < 448.5) { // 右眼
         this.rightSay = this.circlePosition(current, 'right', this.leftSay, this.rightSay)
+        if (this.rightSay === true) this.ipM6.interactive = false
       }
       /* 
         1. 身体先放
@@ -265,6 +505,8 @@ export default class Start extends Common {
             }
           }
         }
+
+        if (this.body === true) this.ipM5.interactive = false
       }
 
       if (1150 < X && X < 1244.9 && 597 < Y && Y < 824) { // 左腿
@@ -279,7 +521,8 @@ export default class Start extends Common {
         if (current.index === 3 && current.num === 2 && current.circleX === 1) { // ip4
           this.ip34LeftPosition(current)
         }
-        // console.log(this.leftLeg);
+
+        if (this.leftLeg === true) this.ipM3.interactive = false
       }
 
       if (1355.1 < X && X < 1449 && 597 < Y && Y < 824) { // 右腿
@@ -294,27 +537,8 @@ export default class Start extends Common {
         if (current.index === 3 && current.num === 6 && current.circleX === -1) { // ip4
           this.ip34RightPosition(current)
         }
-        // console.log(this.rightLeg);
-      }
 
-      if (this.leftSay === true && this.rightSay === true && this.body === true && this.leftLeg === true && this.rightLeg === true) {
-        this.ipInteractive(false)
-
-        getSound('audio_37').play()
-
-        this.loong.visible = false
-        this.ani.state.setAnimation(0, 'talk', true)
-        this._stage.addChild(this.ani)
-
-        this.ani2.state.setAnimation(0, 'right', false)
-        this.ani2.position.set(570, -20)
-        this._stage.addChild(this.ani2)
-
-        this.time = setTimeout(() => {
-          this.loong.visible = true
-
-          this.ani.state.setAnimation(0, 'idle', true)
-        }, 2000);
+        if (this.rightLeg === true) this.ipM7.interactive = false
       }
     }
   }
@@ -554,6 +778,24 @@ export default class Start extends Common {
     e.cursor = 'pointer'
     e.interactive = true
     e.rotation = 0
+    this._stage.addChild(e)
+    e.position.set(X, Y)
+  }
+
+  // 设置图形蒙层初始位置
+  ipMInit(e, start, X, Y, num, rot, scale) {
+    const hitAreaShapes = new HitAreaShapes(start)
+    e.hitArea = hitAreaShapes
+
+
+    e.index = num
+    e.alpha = 0
+    e.scale.x = scale
+    e.scale.y = 1
+    e.pivot.set(e.width / 2, e.height / 2)
+    e.cursor = 'pointer'
+    e.interactive = true
+    e.rotation = rot
     this._stage.addChild(e)
     e.position.set(X, Y)
   }

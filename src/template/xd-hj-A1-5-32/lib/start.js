@@ -7,16 +7,20 @@ import Start2 from './start2'
 export default class Start extends Common {
   constructor() {
     super()
-    this.btnArrZb = [859, 1017.5, 1223, 1428]
+    // this.btnArrZb = [859, 1017.5, 1176]
+    this.btnArrZb = [1111, 1269.5, 1428]
 
     // 按钮
-    this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2'), createSprite('image_btn4'), createSprite('image_btn5')]
+    this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2'), createSprite('image_btn5')]
 
     // 问号
     this.wh = createSprite('image_wh')
 
     // 提示
     this.hint = createSprite('image_hint')
+
+    // 阴影
+    this.yy = createSprite('image_yy')
 
     // 恐龙
     this.loong = getAnimation('animation_long')
@@ -46,19 +50,24 @@ export default class Start extends Common {
       v.position.set(this.btnArrZb[i], 969.5)
     })
 
-    // 问号
-    this.wh.anchor.set(0.5)
-    this.wh.cursor = 'pointer'
-    this.wh.interactive = false
-    this._container.addChild(this.wh)
-    this.wh.position.set(1806, 174)
-
     // 龙
     this.loong.state.setAnimation(0, 'idle', true)
     this.loong.visible = true
     this.loong.scale.set(1.7)
     this._container.addChild(this.loong)
     this.loong.position.set(-250, -350)
+
+    // 问号
+    this.wh.anchor.set(0.5)
+    this.wh.cursor = 'pointer'
+    this.wh.interactive = true
+    this._container.addChild(this.wh)
+    this.wh.position.set(1806, 174)
+
+    // 阴影
+    this.yy.visible = false
+    this.yy.interactive = true
+    this._container.addChild(this.yy)
 
     // 提示
     this.hint.visible = false
@@ -94,7 +103,7 @@ export default class Start extends Common {
           getSound('audio_32').stop()
           this._container.visible = false
           new Start2().init()
-        } else if (i === 3) {
+        } else if (i === 2) {
           clearTimeout(this.time)
           getSound('audio_32').stop()
           this.init()
@@ -108,7 +117,14 @@ export default class Start extends Common {
       this.wh.scale.set(0.9)
     }).on('pointerup', () => {
       this.wh.scale.set(1)
+      this.yy.visible = true
       this.hint.visible = true
+    })
+
+    // 阴影
+    this.yy.on('pointertap', () => {
+      this.yy.visible = false
+      this.hint.visible = false
     })
   }
 

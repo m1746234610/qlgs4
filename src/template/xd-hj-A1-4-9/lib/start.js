@@ -47,6 +47,9 @@ export default class Start extends Common {
     // 车
     this.car = createSprite('image_car')
 
+    // 锁
+    this.suo = createSprite('image_suo')
+
     // 按钮
     this.btnArr = [createSprite('image_btn1'), createSprite('image_btn2'), createSprite('image_btn4'), createSprite('image_btn5')]
 
@@ -144,7 +147,6 @@ export default class Start extends Common {
 
     // 提示
     this.hint.visible = false
-    // this.hint.cursor = 'pointer'
     this.hint.interactive = true
     this._container.addChild(this.hint)
 
@@ -154,6 +156,12 @@ export default class Start extends Common {
     this.car.texture = res['image_car'].texture
     this._container.addChild(this.car)
     this.car.position.set(840, 633)
+
+    // 锁
+    this.suo.visible = false
+    this.suo.anchor.set(0.5)
+    this._container.addChild(this.suo)
+    this.suo.position.set(840, 850)
 
     this.aniArr.map(v => {
       v.visible = false
@@ -210,8 +218,6 @@ export default class Start extends Common {
     this.frameArr.map((v, i) => {
       v.anchor.set(0.5)
       v.visible = false
-      // v.cursor = 'pointer'
-      // v.interactive = true
       v.texture = res['image_frame'].texture
       this._container.addChild(v)
       v.position.set(this.frameArrZb[i].x, this.frameArrZb[i].y)
@@ -354,11 +360,13 @@ export default class Start extends Common {
           this.btnArr[1].interactive = false
           this.car.visible = false
           getSound('audio_bo').play()
+          getSound('audio_dududu').play()
 
           this.aniArr[2].visible = false
           this.eqArr[2].visible = false
           this.frameArr[2].visible = false
           this.num[2].visible = false
+          this.suo.visible = false
 
           // 珠子
           this.goodsArr3.map((v) => {
@@ -375,15 +383,15 @@ export default class Start extends Common {
                 this.btnArr[1].interactive = true
                 this.car.visible = true
                 this.car.texture = res['image_car2'].texture
-                this.car.position.x = 840 - 23
-                // this.car.position.y = 633 - 22
+                // this.car.position.x = 840 - 23
+                this.car.position.y = 633 - 22
+                this.suo.visible = true
               }, 0);
             }
           }
 
           for (let j = 0; j < this.markArr.length; j++) {
             this.markArr[j].visible = false
-            console.log(j);
           }
 
           this.unit1Arr.map(v => v.visible = false)
@@ -596,6 +604,7 @@ export default class Start extends Common {
       })
 
       this.intFun(true)
+      this.btnArr.map(v => console.log(v.interactive))
       if (this.Num === 0) {
         // 64
         this.goodsArr1.map((v, i) => {
@@ -678,6 +687,7 @@ export default class Start extends Common {
         this.unitArr.map(v => v.visible = false)
         this.unitBigArr.map(v => v.visible = false)
       }
+      this.btnArr.map(v => this._container.addChild(v))
     })
   }
 
@@ -778,18 +788,18 @@ export default class Start extends Common {
       this.goodsArr1.map(v => v.interactive = true)
       this.goodsArr2.map(v => v.interactive = false)
       this.goodsArr3.map(v => v.interactive = false)
-      console.log(1);
+      // console.log(1);
     } else if (this.Num === 1) {
       this.goodsArr1.map(v => v.interactive = false)
       this.goodsArr2.map(v => v.interactive = true)
       this.goodsArr3.map(v => v.interactive = false)
-      console.log(2);
+      // console.log(2);
     } else if (this.Num === 2) {
-      this.btnArr[1].interactive = false
+      // this.btnArr[1].interactive = false
       this.goodsArr1.map(v => v.interactive = false)
       this.goodsArr2.map(v => v.interactive = false)
       this.goodsArr3.map(v => v.interactive = true)
-      console.log(3);
+      // console.log(3);
     }
   }
 
