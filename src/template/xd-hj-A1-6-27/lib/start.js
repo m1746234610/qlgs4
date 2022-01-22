@@ -107,6 +107,7 @@ export default class Start extends Common {
     // ip
     this.ipArr.map((v, i) => {
       v.dragging = false
+      v.flag = 1
       v.anchor.set(0.5)
       v.scale.set(0.9)
       v.cursor = 'pointer'
@@ -280,14 +281,11 @@ export default class Start extends Common {
 
       let X = current.position.x
       let Y = current.position.y
-      // console.log(X, Y);
 
       if (1300 < X && X < 1710 && 420 < Y && Y < 590) { // 太极
         current.flag = true
-      } else if (350 < X && X < 1235 && 550 < Y && Y < 690) {
-        current.flag = 1
       } else {
-        current.flag = false
+        current.flag = 1
       }
     }
   }
@@ -296,24 +294,21 @@ export default class Start extends Common {
     let current = e.currentTarget
     if (!current.dragging) return
     current.dragging = false
-    // console.log(current.x, current.y);
+
     if (!current.flag) {
       getSound('audio_error').play()
       current.position.set(current.x2, current.y2)
       // this.ipShadowArr[i].visible = false
     } else {
+      let X = current.position.x
+      let Y = current.position.y
+
       if (current.flag === 1) {
-        if (this.arrow.visible) {
-          getSound('audio_cong').play()
-          current.position.y = 660
-        } else {
-          getSound('audio_error').play()
-          current.position.set(current.x2, current.y2)
-          // this.ipShadowArr[i].visible = false
-        }
-      } else {
         getSound('audio_cong').play()
-      }
+        if (this.arrow.visible && (350 < X && X < 1235 && 550 < Y && Y < 690)) {
+          current.position.y = 660
+        } 
+      } 
     }
   }
 
