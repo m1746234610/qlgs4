@@ -90,6 +90,7 @@ export default class Start extends Common {
     this.wh.position.set(1806, 174)
 
     // 太极
+    this.tj.visible = false
     this.tj.anchor.set(0.5)
     this._stage.addChild(this.tj)
     this.tj.position.set(1495, 580)
@@ -304,7 +305,7 @@ export default class Start extends Common {
       let Y = current.position.y
 
       if (current.flag === 1) {
-        getSound('audio_cong').play()
+        // getSound('audio_cong').play()
         if (this.arrow.visible && (350 < X && X < 1235 && 550 < Y && Y < 690)) {
           current.position.y = 660
         } 
